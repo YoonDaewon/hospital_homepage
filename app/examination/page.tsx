@@ -110,6 +110,8 @@ export default function ExaminationPage() {
         eyebrow="EXAMINATION"
         title="정확한 진단을 위한, 정밀한 검사"
         subtitle="검증된 검사 장비와 표준 프로토콜을 갖추고, 증상의 근본 원인을 찾기 위해 깊이 살핍니다."
+        image="/images/examinationHero.jpg"
+        imageAlt="숨앤소리 이비인후과 검사 안내"
       />
 
       <Section bg="bone" size="md">

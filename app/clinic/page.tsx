@@ -19,6 +19,8 @@ export default function ClinicIndexPage() {
         eyebrow="OUR CLINIC"
         title="7개의 전문 클리닉"
         subtitle="이비인후과 영역의 모든 증상을 깊이 있게 다루기 위해, 클리닉별로 전문화된 진료 시스템을 갖추었습니다."
+        image="/images/clinicHero.jpg"
+        imageAlt="숨앤소리 이비인후과 진료 안내"
       />
       <Section bg="bone" size="md">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">

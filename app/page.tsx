@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { Placeholder } from "@/components/ui/Placeholder";
+import { MediaFrame } from "@/components/ui/MediaFrame";
+import Image from "next/image";
 import { clinics } from "@/lib/clinics";
 import { siteConfig } from "@/lib/site-config";
 
@@ -9,8 +11,8 @@ export default function Home() {
     <>
       <HeroSection />
       <PhilosophySection />
-      <ClinicsSection />
       <DoctorSection />
+      <ClinicsSection />
       <FacilityPreviewSection />
       <VisitSection />
     </>
@@ -20,12 +22,15 @@ export default function Home() {
 function HeroSection() {
   return (
     <section className="relative h-[100svh] min-h-[640px] overflow-hidden">
-      <Placeholder
-        aspect="wide"
-        tone="warm"
-        className="absolute inset-0 w-full h-full"
+      <Image
+        src="/images/hero.jpg"
+        alt="숨앤소리 이비인후과 라운지"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-bone/30 via-transparent to-bone" />
+      <div className="absolute inset-0 bg-gradient-to-b from-bone/40 via-bone/10 to-bone" />
       <div className="absolute inset-0 flex flex-col justify-end pb-20 lg:pb-32">
         <div className="container-content">
           <p className="font-serif italic text-taupe tracking-[0.3em] text-xs lg:text-sm mb-6">
@@ -73,7 +78,12 @@ function PhilosophySection() {
     <Section bg="bone" size="lg">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
         <div className="lg:col-span-5">
-          <Placeholder aspect="portrait" tone="warm" />
+          <MediaFrame
+            src="/images/about.jpg"
+            alt="숨앤소리 이비인후과 진료 공간"
+            aspect="portrait"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+          />
         </div>
         <div className="lg:col-span-6 lg:col-start-7">
           <p className="eyebrow mb-5">PHILOSOPHY</p>
@@ -120,7 +130,7 @@ function PhilosophySection() {
 
 function ClinicsSection() {
   return (
-    <Section bg="ivory" size="lg" id="clinics">
+    <Section bg="bone" size="lg" id="clinics">
       <SectionHeader
         eyebrow="CLINIC"
         title={
@@ -167,10 +177,16 @@ function ClinicsSection() {
 
 function DoctorSection() {
   return (
-    <Section bg="bone" size="lg">
+    <Section bg="ivory" size="lg">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div className="lg:col-span-5 lg:order-2">
-          <Placeholder aspect="portrait" tone="deep" />
+          <MediaFrame
+            src="/images/doctor_v1.png"
+            alt="숨앤소리 이비인후과 오승리 대표원장"
+            aspect="portrait"
+            sizes="(max-width: 1024px) 100vw, 40vw"
+            objectPosition="center top"
+          />
         </div>
         <div className="lg:col-span-6 lg:order-1">
           <p className="eyebrow mb-5">DOCTOR</p>
@@ -181,27 +197,28 @@ function DoctorSection() {
             대표원장 / 이비인후과 전문의
           </p>
           <div className="mt-8 space-y-4 text-mocha text-base leading-[1.9] font-light">
-            <p>
-              &ldquo;환자분이 들려주시는 작은 소리도 놓치지 않으려 합니다.
-              증상 너머의 일상을 함께 살피는 것이 진료의 시작이라 믿습니다.&rdquo;
+            <p className="font-serif italic text-cocoa text-lg md:text-xl leading-relaxed">
+              &ldquo;가족을 돌본다는 마음으로
+              <br />
+              최선을 다하겠습니다.&rdquo;
             </p>
           </div>
           <div className="mt-10 space-y-2.5 text-sm text-charcoal/80 font-light border-t border-line pt-6">
             <p>
-              <span className="text-taupe mr-3 inline-block w-20">전문의</span>
-              이비인후과 전문의
+              <span className="text-taupe mr-3 inline-block w-20">학력</span>
+              중앙대학교 의과대학 졸업
+            </p>
+            <p>
+              <span className="text-taupe mr-3 inline-block w-20">학력</span>
+              중앙대학교 의학 석사
+            </p>
+            <p>
+              <span className="text-taupe mr-3 inline-block w-20">전공의</span>
+              중앙대학교병원 이비인후과 전공의 수료
             </p>
             <p>
               <span className="text-taupe mr-3 inline-block w-20">학회</span>
               대한이비인후과학회 정회원
-            </p>
-            <p>
-              <span className="text-taupe mr-3 inline-block w-20">학회</span>
-              대한청각학회 / 대한비과학회 정회원
-            </p>
-            <p>
-              <span className="text-taupe mr-3 inline-block w-20">학회</span>
-              대한수면학회 정회원
             </p>
           </div>
           <Link
@@ -241,16 +258,36 @@ function FacilityPreviewSection() {
       </div>
       <div className="grid grid-cols-12 gap-3 md:gap-4">
         <div className="col-span-12 md:col-span-7">
-          <Placeholder aspect="video" tone="warm" label="LOBBY" />
+          <MediaFrame
+            src="/images/facility/lounge.jpeg"
+            alt="라운지 — 환자 대기 공간"
+            aspect="video"
+            sizes="(max-width: 768px) 100vw, 60vw"
+          />
         </div>
         <div className="col-span-6 md:col-span-5">
-          <Placeholder aspect="square" tone="soft" label="RECEPTION" />
+          <MediaFrame
+            src="/images/facility/reception.jpeg"
+            alt="리셉션 데스크"
+            aspect="square"
+            sizes="(max-width: 768px) 50vw, 40vw"
+          />
         </div>
         <div className="col-span-6 md:col-span-5">
-          <Placeholder aspect="square" tone="warm" label="CONSULTATION" />
+          <MediaFrame
+            src="/images/facility/consultation.jpeg"
+            alt="진료실"
+            aspect="square"
+            sizes="(max-width: 768px) 50vw, 40vw"
+          />
         </div>
         <div className="col-span-12 md:col-span-7">
-          <Placeholder aspect="video" tone="deep" label="REST AREA" />
+          <MediaFrame
+            src="/images/facility/sleep-room.jpeg"
+            alt="수면 다원검사실"
+            aspect="video"
+            sizes="(max-width: 768px) 100vw, 60vw"
+          />
         </div>
       </div>
     </Section>

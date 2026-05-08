@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { Placeholder } from "@/components/ui/Placeholder";
+import { MediaFrame } from "@/components/ui/MediaFrame";
 
 export const metadata: Metadata = {
   title: "병원소개",
@@ -17,39 +17,41 @@ export default function AboutPage() {
         eyebrow="ABOUT US"
         title="우리는, 듣는 일에서부터 시작합니다."
         subtitle="환자분이 들려주시는 작은 이야기 하나하나가, 가장 정확한 진료의 출발점입니다."
+        image="/images/aboutHero.jpg"
+        imageAlt="숨앤소리 이비인후과 병원 소개"
       />
 
       <Section bg="bone" size="lg">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          <div className="lg:col-span-5">
-            <Placeholder aspect="portrait" tone="warm" />
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <p className="eyebrow mb-5">GREETINGS</p>
-            <h2 className="heading-display text-cocoa text-3xl md:text-4xl lg:text-[44px]">
-              인사말
-            </h2>
-            <div className="mt-8 space-y-5 text-mocha text-base md:text-[17px] leading-[1.95] font-light">
-              <p>
-                안녕하세요. 숨앤소리 이비인후과 대표원장 오승리입니다.
-              </p>
-              <p>
-                이비인후과는 호흡과 소리, 그리고 균형이라는 우리 삶의 가장
-                기본적인 감각들이 만나는 곳입니다. 그래서 작은 변화 하나에도
-                일상이 크게 흔들립니다. 코가 막혀 잠을 이루지 못하고, 작은
-                이명에 마음이 어지럽고, 어지럼증으로 한 발자국 떼는 일이
-                두려워지기도 합니다.
-              </p>
-              <p>
-                저희 숨앤소리 이비인후과는 그 작은 변화를 가볍게 지나치지
-                않으려 합니다. 충분한 시간을 들여 환자분의 이야기를 듣고,
-                정밀한 검사로 원인을 깊이 살피며, 가장 적절한 치료의 길을
-                함께 찾아가겠습니다.
-              </p>
-              <p className="font-serif italic text-cocoa">
-                숨앤소리 이비인후과 대표원장 &nbsp;오승리 드림
-              </p>
-            </div>
+        <div className="max-w-3xl mx-auto">
+          <p className="eyebrow mb-5">GREETINGS</p>
+          <h2 className="heading-display text-cocoa text-3xl md:text-4xl lg:text-[44px]">
+            인사말
+          </h2>
+          <p className="mt-10 font-serif italic text-cocoa text-2xl md:text-3xl leading-relaxed">
+            &ldquo;가족을 돌본다는 마음으로
+            <br />
+            최선을 다하겠습니다.&rdquo;
+          </p>
+          <div className="mt-10 space-y-5 text-mocha text-base md:text-[17px] leading-[1.95] font-light">
+            <p>
+              안녕하세요. 숨앤소리 이비인후과 대표원장 오승리입니다.
+            </p>
+            <p>
+              이비인후과는 호흡과 소리, 그리고 균형이라는 우리 삶의 가장
+              기본적인 감각들이 만나는 곳입니다. 그래서 작은 변화 하나에도
+              일상이 크게 흔들립니다. 코가 막혀 잠을 이루지 못하고, 작은
+              이명에 마음이 어지럽고, 어지럼증으로 한 발자국 떼는 일이
+              두려워지기도 합니다.
+            </p>
+            <p>
+              저희 숨앤소리 이비인후과는 그 작은 변화를 가볍게 지나치지
+              않으려 합니다. 충분한 시간을 들여 환자분의 이야기를 듣고,
+              정밀한 검사로 원인을 깊이 살피며, 가장 적절한 치료의 길을
+              함께 찾아가겠습니다.
+            </p>
+            <p className="font-serif italic text-cocoa pt-2">
+              숨앤소리 이비인후과 대표원장 &nbsp;오승리 드림
+            </p>
           </div>
         </div>
       </Section>
@@ -57,7 +59,13 @@ export default function AboutPage() {
       <Section bg="ivory" size="lg" id="doctor">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-5">
-            <Placeholder aspect="portrait" tone="deep" />
+            <MediaFrame
+              src="/images/doctor_v1.png"
+              alt="숨앤소리 이비인후과 오승리 대표원장"
+              aspect="portrait"
+              sizes="(max-width: 1024px) 100vw, 40vw"
+              objectPosition="center top"
+            />
             <div className="mt-6">
               <p className="eyebrow">DR. OH SEUNGRI</p>
               <h3 className="mt-3 heading-display text-cocoa text-3xl md:text-4xl">
@@ -80,21 +88,22 @@ export default function AboutPage() {
                 items={["대한이비인후과학회 인정 이비인후과 전문의"]}
               />
               <ProfileBlock
-                heading="학력"
+                heading="학력 / 수련"
                 items={[
-                  "대학교 의과대학 졸업",
-                  "대학병원 이비인후과 전공의 수료",
-                  "이비인후과 박사 과정 수료 (예시)",
+                  "중앙대학교 의과대학 졸업",
+                  "중앙대학교 의학 석사",
+                  "중앙대학교병원 이비인후과 전공의 수료",
                 ]}
               />
               <ProfileBlock
                 heading="학회 활동"
                 items={[
                   "대한이비인후과학회 정회원",
-                  "대한청각학회 정회원",
                   "대한비과학회 정회원",
+                  "대한이과학회 정회원",
+                  "대한두경부외과학회 정회원",
+                  "대한소아이비인후과학회 정회원",
                   "대한수면학회 정회원",
-                  "대한기능의학회 정회원",
                 ]}
               />
               <ProfileBlock

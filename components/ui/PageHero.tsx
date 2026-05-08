@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Placeholder } from "./Placeholder";
 import { cn } from "@/lib/cn";
 
@@ -6,6 +7,8 @@ type PageHeroProps = {
   title: string;
   subtitle?: string;
   tone?: "warm" | "deep" | "soft";
+  image?: string;
+  imageAlt?: string;
   className?: string;
 };
 
@@ -14,6 +17,8 @@ export function PageHero({
   title,
   subtitle,
   tone = "warm",
+  image,
+  imageAlt,
   className,
 }: PageHeroProps) {
   return (
@@ -23,12 +28,23 @@ export function PageHero({
         className,
       )}
     >
-      <Placeholder
-        aspect="wide"
-        tone={tone}
-        className="absolute inset-0 w-full h-full"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-bone/30 via-bone/10 to-bone" />
+      {image ? (
+        <Image
+          src={image}
+          alt={imageAlt ?? ""}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      ) : (
+        <Placeholder
+          aspect="wide"
+          tone={tone}
+          className="absolute inset-0 w-full h-full"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-b from-bone/40 via-bone/20 to-bone" />
       <div className="container-content relative">
         <p className="font-serif italic text-taupe tracking-[0.3em] text-xs lg:text-sm">
           {eyebrow}

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/lib/site-config";
 
@@ -16,13 +15,16 @@ const kakaoMapUrl = `https://map.kakao.com/?q=${mapQuery}`;
 export default function LocationPage() {
   return (
     <>
-      <PageHero
-        eyebrow="LOCATION"
-        title="오시는 길"
-        subtitle="역삼역 2번 출구에서 도보 1분, 일상의 동선 위에 있습니다."
-      />
-
-      <Section bg="bone" size="md">
+      <Section bg="bone" size="md" className="pt-32 lg:pt-40">
+        <div className="max-w-3xl mb-12 lg:mb-16">
+          <p className="eyebrow mb-5">LOCATION</p>
+          <h1 className="heading-display text-cocoa text-4xl md:text-5xl lg:text-6xl">
+            오시는 길
+          </h1>
+          <p className="mt-6 text-mocha text-base md:text-lg max-w-2xl font-light leading-relaxed">
+            역삼역 2번 출구에서 도보 1분, 일상의 동선 위에 있습니다.
+          </p>
+        </div>
         <div className="aspect-[16/10] md:aspect-[21/9] w-full overflow-hidden border border-line bg-ivory">
           <iframe
             title="숨앤소리 이비인후과 위치"

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { navigation, siteConfig } from "@/lib/site-config";
 
@@ -34,12 +35,22 @@ export function Header() {
         }`}
       >
         <div className="container-content flex items-center justify-between h-16 sm:h-20 lg:h-24">
-          <Link href="/" className="flex items-baseline gap-2" onClick={closeMobile}>
-            <span className="font-serif text-lg sm:text-xl lg:text-2xl tracking-tight text-cocoa">
-              숨앤소리
-            </span>
-            <span className="hidden sm:inline text-[11px] tracking-[0.25em] text-taupe font-light">
-              ENT CLINIC
+          <Link href="/" className="flex items-center gap-2.5" onClick={closeMobile}>
+            <Image
+              src="/images/icon_v1.png"
+              alt=""
+              width={36}
+              height={36}
+              className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 object-contain"
+              priority
+            />
+            <span className="flex items-baseline gap-2">
+              <span className="font-serif text-lg sm:text-xl lg:text-2xl tracking-tight text-cocoa">
+                숨앤소리
+              </span>
+              <span className="hidden sm:inline text-[11px] tracking-[0.25em] text-taupe font-light">
+                ENT CLINIC
+              </span>
             </span>
           </Link>
 
@@ -152,10 +163,19 @@ function MobileMenu({
         }`}
       >
         <div className="flex items-center justify-between h-16 sm:h-20 px-6 border-b border-line">
-          <span className="font-serif text-lg text-cocoa tracking-tight">
-            숨앤소리
-            <span className="ml-2 text-[10px] tracking-[0.25em] text-taupe">
-              ENT
+          <span className="flex items-center gap-2">
+            <Image
+              src="/images/icon_v1.png"
+              alt=""
+              width={28}
+              height={28}
+              className="w-7 h-7 object-contain"
+            />
+            <span className="font-serif text-lg text-cocoa tracking-tight">
+              숨앤소리
+              <span className="ml-2 text-[10px] tracking-[0.25em] text-taupe">
+                ENT
+              </span>
             </span>
           </span>
           <button
