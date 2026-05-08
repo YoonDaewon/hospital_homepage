@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bone: #faf8f4;
+  --color-ivory: #f5f0e8;
+  --color-sand: #ebe3d6;
+  --color-beige: #d8cab4;
+  --color-taupe: #a89880;
+  --color-mocha: #6b5d4d;
+  --color-cocoa: #3e342b;
+  --color-charcoal: #2a2520;
+
+  --color-line: rgba(62, 52, 43, 0.12);
+  --color-line-strong: rgba(62, 52, 43, 0.22);
+
+  --font-sans: var(--font-noto-sans-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-serif: var(--font-cormorant), "Noto Serif KR", serif;
+
+  --container-content: 1200px;
+
+  --tracking-tightest: -0.04em;
+  --tracking-tighter: -0.02em;
+}
+
+:root {
+  --background: #faf8f4;
+  --foreground: #2a2520;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-beige);
+  color: var(--color-cocoa);
+}
+
+@utility container-content {
+  max-width: var(--container-content);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+
+@utility heading-display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+@utility eyebrow {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  font-size: 0.875rem;
+  color: var(--color-taupe);
+}
