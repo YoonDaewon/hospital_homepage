@@ -78,19 +78,11 @@ export function SubPageView({
 
       {others.length > 0 && (
         <Section bg="bone" size="md">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="eyebrow mb-3">RELATED</p>
-              <h2 className="heading-display text-cocoa text-2xl md:text-3xl">
-                {category.name}의 다른 진료
-              </h2>
-            </div>
-            <Link
-              href={`/${category.slug}`}
-              className="text-cocoa text-sm tracking-[0.2em] border-b border-cocoa/30 pb-1 hover:border-cocoa transition-colors"
-            >
-              VIEW ALL <span>→</span>
-            </Link>
+          <div className="mb-10">
+            <p className="eyebrow mb-3">RELATED</p>
+            <h2 className="heading-display text-cocoa text-2xl md:text-3xl">
+              {category.name}의 다른 진료
+            </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-10">
             {others.slice(0, 3).map((p, i) => (

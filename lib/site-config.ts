@@ -65,7 +65,7 @@ export const navigation: NavItem[] = [
   },
   {
     label: "난청·이명",
-    href: "/hearing-tinnitus",
+    href: "/hearing-tinnitus/hearing-loss",
     children: [
       { label: "난청", href: "/hearing-tinnitus/hearing-loss" },
       { label: "이명", href: "/hearing-tinnitus/tinnitus" },
@@ -74,7 +74,7 @@ export const navigation: NavItem[] = [
   },
   {
     label: "어지럼증·두통",
-    href: "/dizziness-headache",
+    href: "/dizziness-headache/dizziness",
     children: [
       { label: "어지럼증", href: "/dizziness-headache/dizziness" },
       { label: "두통", href: "/dizziness-headache/headache" },
@@ -82,7 +82,7 @@ export const navigation: NavItem[] = [
   },
   {
     label: "수면질환",
-    href: "/sleep",
+    href: "/sleep/disorders",
     children: [
       { label: "수면질환", href: "/sleep/disorders" },
       { label: "수면다원검사", href: "/sleep/polysomnography" },
@@ -95,7 +95,7 @@ export const navigation: NavItem[] = [
   },
   {
     label: "이비인후과",
-    href: "/ent",
+    href: "/ent/rhinitis-sinusitis",
     children: [
       { label: "비염·축농증", href: "/ent/rhinitis-sinusitis" },
       { label: "후두·음성질환", href: "/ent/voice" },
@@ -104,7 +104,7 @@ export const navigation: NavItem[] = [
   },
   {
     label: "수술·수액",
-    href: "/surgery-iv",
+    href: "/surgery-iv/procedures",
     children: [
       { label: "비·구강 시술", href: "/surgery-iv/procedures" },
       { label: "영양·면역 수액", href: "/surgery-iv/iv-therapy" },

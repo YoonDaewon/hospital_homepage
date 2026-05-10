@@ -6,15 +6,7 @@ import { useEffect, useState } from "react";
 import { navigation, siteConfig } from "@/lib/site-config";
 
 export function Header() {
-  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
@@ -27,25 +19,19 @@ export function Header() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-          scrolled || mobileOpen
-            ? "bg-bone/90 backdrop-blur-md border-b border-line"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="container-content flex items-center justify-between h-16 sm:h-20 lg:h-24">
+      <header className="fixed inset-x-0 top-0 z-50 bg-bone border-b border-line">
+        <div className="container-content flex items-center justify-between h-14 sm:h-16 lg:h-[72px]">
           <Link href="/" className="flex items-center gap-2.5" onClick={closeMobile}>
             <Image
               src="/images/icon_v1.png"
               alt=""
               width={36}
               height={36}
-              className="w-7 h-7 sm:w-8 sm:h-8 lg:w-9 lg:h-9 object-contain"
+              className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-contain"
               priority
             />
             <span className="flex items-baseline gap-2">
-              <span className="font-sans font-bold text-xl sm:text-2xl lg:text-[26px] tracking-tight text-cocoa">
+              <span className="font-sans font-bold text-lg sm:text-xl lg:text-[22px] tracking-tight text-cocoa">
                 숨앤소리
               </span>
               <span className="hidden sm:inline text-[11px] tracking-[0.25em] text-taupe font-light">
@@ -59,7 +45,7 @@ export function Header() {
               <div key={item.label} className="relative group">
                 <Link
                   href={item.href}
-                  className="px-5 py-3 text-[15px] text-charcoal hover:text-cocoa transition-colors"
+                  className="px-4 py-2 text-[14px] text-charcoal hover:text-cocoa transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -81,18 +67,6 @@ export function Header() {
               </div>
             ))}
           </nav>
-
-          <div className="hidden lg:flex items-center gap-6">
-            <a
-              href={`tel:${siteConfig.phone}`}
-              className="flex items-center gap-2 text-sm text-cocoa group"
-            >
-              <span className="font-serif italic text-taupe">Tel.</span>
-              <span className="tracking-wider group-hover:text-mocha transition-colors">
-                {siteConfig.phoneDisplay}
-              </span>
-            </a>
-          </div>
 
           <button
             type="button"

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { categories, allSubPagePaths } from "@/lib/categories";
+import { allSubPagePaths } from "@/lib/categories";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -15,13 +15,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/about/visit`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
   ];
 
-  const categoryRoutes: MetadataRoute.Sitemap = categories.map((c) => ({
-    url: `${base}/${c.slug}`,
-    lastModified: now,
-    changeFrequency: "monthly",
-    priority: 0.9,
-  }));
-
   const subPageRoutes: MetadataRoute.Sitemap = allSubPagePaths().map(
     ({ category, slug }) => ({
       url: `${base}/${category}/${slug}`,
@@ -31,5 +24,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticRoutes, ...categoryRoutes, ...subPageRoutes];
+  return [...staticRoutes, ...subPageRoutes];
 }

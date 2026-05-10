@@ -45,7 +45,7 @@ function ClinicsSection() {
           return (
           <Link
             key={c.slug}
-            href={`/${c.slug}`}
+            href={`/${c.slug}/${c.pages[0].slug}`}
             className="group block"
           >
             <div className="overflow-hidden">
