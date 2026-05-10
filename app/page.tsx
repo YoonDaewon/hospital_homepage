@@ -2,131 +2,28 @@ import Link from "next/link";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { MediaFrame } from "@/components/ui/MediaFrame";
-import Image from "next/image";
-import { clinics } from "@/lib/clinics";
+import { HeroCarousel } from "@/components/site/HeroCarousel";
+import { categories } from "@/lib/categories";
 import { siteConfig } from "@/lib/site-config";
 
 export default function Home() {
   return (
     <>
-      <HeroSection />
-      <PhilosophySection />
-      <DoctorSection />
+      <HeroCarousel />
       <ClinicsSection />
+      <DoctorSection />
       <FacilityPreviewSection />
       <VisitSection />
     </>
   );
 }
 
-function HeroSection() {
-  return (
-    <section className="relative h-[100svh] min-h-[640px] overflow-hidden">
-      <Image
-        src="/images/hero.jpg"
-        alt="숨앤소리 이비인후과 라운지"
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-bone/40 via-bone/10 to-bone" />
-      <div className="absolute inset-0 flex flex-col justify-end pb-20 lg:pb-32">
-        <div className="container-content">
-          <p className="font-serif italic text-taupe tracking-[0.3em] text-xs lg:text-sm mb-6">
-            SOOM &amp; SORI &nbsp;·&nbsp; ENT CLINIC
-          </p>
-          <h1 className="heading-display text-cocoa text-[40px] sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl">
-            당신의 호흡과 소리에
-            <br />
-            <span className="text-mocha">가장 가까이 다가가는 진료</span>
-          </h1>
-          <p className="mt-8 text-mocha text-base md:text-lg max-w-xl font-light leading-relaxed">
-            숨앤소리 이비인후과는 환자분 한 분 한 분의 일상에
-            <br className="hidden md:block" />
-            맑은 호흡과 또렷한 소리를 되돌려 드립니다.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-3 px-7 py-3.5 bg-cocoa text-bone text-sm tracking-wider hover:bg-charcoal transition-colors"
-            >
-              병원 소개
-              <span className="text-bone/70">→</span>
-            </Link>
-            <Link
-              href="/clinic/hearing-tinnitus"
-              className="inline-flex items-center gap-3 px-7 py-3.5 border border-cocoa/40 text-cocoa text-sm tracking-wider hover:bg-cocoa hover:text-bone transition-all"
-            >
-              진료 안내
-            </Link>
-          </div>
-        </div>
-      </div>
-      <div className="absolute bottom-6 right-6 lg:bottom-10 lg:right-10 hidden md:flex flex-col items-center gap-3 text-taupe">
-        <span className="font-serif italic text-xs tracking-[0.3em]">
-          SCROLL
-        </span>
-        <span className="block w-px h-12 bg-taupe/60" />
-      </div>
-    </section>
-  );
-}
-
-function PhilosophySection() {
-  return (
-    <Section bg="bone" size="lg">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-        <div className="lg:col-span-5">
-          <MediaFrame
-            src="/images/about.jpg"
-            alt="숨앤소리 이비인후과 진료 공간"
-            aspect="portrait"
-            sizes="(max-width: 1024px) 100vw, 40vw"
-          />
-        </div>
-        <div className="lg:col-span-6 lg:col-start-7">
-          <p className="eyebrow mb-5">PHILOSOPHY</p>
-          <h2 className="heading-display text-cocoa text-3xl md:text-4xl lg:text-[44px]">
-            소리는 곧 일상이고,
-            <br />
-            호흡은 곧 삶입니다.
-          </h2>
-          <div className="mt-8 space-y-5 text-mocha text-base md:text-[17px] leading-[1.9] font-light">
-            <p>
-              숨앤소리 이비인후과는 단순히 증상을 치료하는 것을 넘어,
-              <br className="hidden md:block" />
-              환자분의 일상에 맑은 호흡과 또렷한 소리를 되돌려 드리는 것을
-              가장 중요한 가치로 생각합니다.
-            </p>
-            <p>
-              한 분 한 분의 이야기에 오래 귀 기울이고, 정밀한 검사와 깊은
-              고민 끝에 가장 적절한 치료의 길을 함께 찾아갑니다. 그것이
-              저희가 매일 환자분을 마주하는 자세입니다.
-            </p>
-          </div>
-          <div className="mt-10 grid grid-cols-3 gap-4 max-w-md">
-            {[
-              { num: "01", label: "정밀 진단" },
-              { num: "02", label: "맞춤 치료" },
-              { num: "03", label: "지속 관리" },
-            ].map((v) => (
-              <div
-                key={v.num}
-                className="border-t border-line-strong pt-4"
-              >
-                <p className="font-serif text-taupe text-sm tracking-wider">
-                  {v.num}
-                </p>
-                <p className="mt-1.5 text-cocoa text-sm">{v.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </Section>
-  );
-}
+const clinicImages: Record<string, { src: string; alt: string }> = {
+  "hearing-tinnitus": { src: "/images/clinic/hear.jpg", alt: "난청·이명 클리닉" },
+  "dizziness-headache": { src: "/images/clinic/headache.jpg", alt: "어지럼증·두통 클리닉" },
+  sleep: { src: "/images/clinic/sleep.png", alt: "수면질환 클리닉" },
+  ent: { src: "/images/clinic/enp.jpg", alt: "이비인후과 클리닉" },
+};
 
 function ClinicsSection() {
   return (
@@ -141,35 +38,50 @@ function ClinicsSection() {
         }
         desc="이비인후과 영역의 모든 증상을 깊이 있게 다루기 위해, 클리닉별로 전문화된 진료 시스템을 갖추었습니다."
       />
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
-        {clinics.map((c, i) => (
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+        {categories.map((c, i) => {
+          const img = clinicImages[c.slug];
+          return (
           <Link
             key={c.slug}
-            href={`/clinic/${c.slug}`}
+            href={`/${c.slug}`}
             className="group block"
           >
-            <Placeholder
-              aspect="video"
-              tone={i % 3 === 1 ? "soft" : "warm"}
-              className="transition-transform duration-700 group-hover:scale-[1.02]"
-            />
-            <div className="mt-5">
+            <div className="overflow-hidden">
+              <MediaFrame
+                src={img.src}
+                alt={img.alt}
+                aspect="video"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+            </div>
+            <div className="mt-6">
               <p className="font-serif italic text-taupe text-xs tracking-[0.2em]">
                 0{i + 1}&nbsp;·&nbsp;{c.nameEn.toUpperCase()}
               </p>
-              <h3 className="mt-2 text-cocoa text-xl md:text-2xl font-normal tracking-tight group-hover:text-mocha transition-colors">
+              <h3 className="mt-2 text-cocoa text-2xl md:text-3xl font-normal tracking-tight group-hover:text-mocha transition-colors">
                 {c.name}
               </h3>
-              <p className="mt-3 text-mocha text-sm leading-relaxed font-light line-clamp-2">
-                {c.summary}
+              <p className="mt-4 text-mocha text-[15px] leading-relaxed font-light">
+                {c.intro}
               </p>
-              <p className="mt-4 inline-flex items-center gap-2 text-xs text-cocoa tracking-[0.2em] border-b border-cocoa/30 pb-1 group-hover:border-cocoa transition-colors">
+              <div className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5 text-xs text-charcoal/70 tracking-wide">
+                {c.pages.slice(0, 5).map((p) => (
+                  <span key={p.slug}>· {p.name}</span>
+                ))}
+                {c.pages.length > 5 && (
+                  <span className="text-taupe">+ {c.pages.length - 5}</span>
+                )}
+              </div>
+              <p className="mt-6 inline-flex items-center gap-2 text-xs text-cocoa tracking-[0.2em] border-b border-cocoa/30 pb-1 group-hover:border-cocoa transition-colors">
                 READ MORE
                 <span>→</span>
               </p>
             </div>
           </Link>
-        ))}
+          );
+        })}
       </div>
     </Section>
   );
@@ -222,7 +134,7 @@ function DoctorSection() {
             </p>
           </div>
           <Link
-            href="/about#doctor"
+            href="/about/doctor"
             className="mt-10 inline-flex items-center gap-3 text-cocoa text-sm tracking-[0.2em] border-b border-cocoa/30 pb-1 hover:border-cocoa transition-colors"
           >
             VIEW PROFILE
@@ -249,46 +161,38 @@ function FacilityPreviewSection() {
           }
         />
         <Link
-          href="/facility"
+          href="/about/facility"
           className="self-start md:self-end inline-flex items-center gap-3 text-cocoa text-sm tracking-[0.2em] border-b border-cocoa/30 pb-1 hover:border-cocoa transition-colors"
         >
           VIEW ALL
           <span>→</span>
         </Link>
       </div>
-      <div className="grid grid-cols-12 gap-3 md:gap-4">
-        <div className="col-span-12 md:col-span-7">
-          <MediaFrame
-            src="/images/facility/lounge.jpeg"
-            alt="라운지 — 환자 대기 공간"
-            aspect="video"
-            sizes="(max-width: 768px) 100vw, 60vw"
-          />
-        </div>
-        <div className="col-span-6 md:col-span-5">
-          <MediaFrame
-            src="/images/facility/reception.jpeg"
-            alt="리셉션 데스크"
-            aspect="square"
-            sizes="(max-width: 768px) 50vw, 40vw"
-          />
-        </div>
-        <div className="col-span-6 md:col-span-5">
-          <MediaFrame
-            src="/images/facility/consultation.jpeg"
-            alt="진료실"
-            aspect="square"
-            sizes="(max-width: 768px) 50vw, 40vw"
-          />
-        </div>
-        <div className="col-span-12 md:col-span-7">
-          <MediaFrame
-            src="/images/facility/sleep-room.jpeg"
-            alt="수면 다원검사실"
-            aspect="video"
-            sizes="(max-width: 768px) 100vw, 60vw"
-          />
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+        <MediaFrame
+          src="/images/facility/lounge.jpeg"
+          alt="라운지 — 환자 대기 공간"
+          aspect="video"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <MediaFrame
+          src="/images/facility/reception.jpeg"
+          alt="리셉션 데스크"
+          aspect="video"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <MediaFrame
+          src="/images/facility/consultation.jpeg"
+          alt="진료실"
+          aspect="video"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
+        <MediaFrame
+          src="/images/facility/sleep-room.jpeg"
+          alt="수면 다원검사실"
+          aspect="video"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
       </div>
     </Section>
   );
@@ -335,7 +239,7 @@ function VisitSection() {
             </div>
           </dl>
           <Link
-            href="/location"
+            href="/about/visit"
             className="mt-10 inline-flex items-center gap-3 px-7 py-3.5 border border-cocoa/40 text-cocoa text-sm tracking-wider hover:bg-cocoa hover:text-bone transition-all"
           >
             지도 보기

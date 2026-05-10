@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { MediaFrame } from "@/components/ui/MediaFrame";
 
 export const metadata: Metadata = {
-  title: "병원소개",
+  title: "인사말",
   description:
-    "숨앤소리 이비인후과는 환자분의 호흡과 소리에 가장 가까이 다가가는 강남 역삼역 이비인후과입니다. 오승리 대표원장의 진료 철학과 의료진을 소개합니다.",
+    "숨앤소리 이비인후과 대표원장 오승리의 인사말. 환자분의 호흡과 소리에 가장 가까이 다가가는 진료 철학을 소개합니다.",
   alternates: { canonical: "/about" },
 };
 
@@ -33,9 +33,7 @@ export default function AboutPage() {
             최선을 다하겠습니다.&rdquo;
           </p>
           <div className="mt-10 space-y-5 text-mocha text-base md:text-[17px] leading-[1.95] font-light">
-            <p>
-              안녕하세요. 숨앤소리 이비인후과 대표원장 오승리입니다.
-            </p>
+            <p>안녕하세요. 숨앤소리 이비인후과 대표원장 오승리입니다.</p>
             <p>
               이비인후과는 호흡과 소리, 그리고 균형이라는 우리 삶의 가장
               기본적인 감각들이 만나는 곳입니다. 그래서 작은 변화 하나에도
@@ -56,72 +54,7 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      <Section bg="ivory" size="lg" id="doctor">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <div className="lg:col-span-5">
-            <MediaFrame
-              src="/images/doctor_v1.png"
-              alt="숨앤소리 이비인후과 오승리 대표원장"
-              aspect="portrait"
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              objectPosition="center top"
-            />
-            <div className="mt-6">
-              <p className="eyebrow">DR. OH SEUNGRI</p>
-              <h3 className="mt-3 heading-display text-cocoa text-3xl md:text-4xl">
-                오승리 대표원장
-              </h3>
-              <p className="mt-2 text-taupe text-sm tracking-wider">
-                이비인후과 전문의
-              </p>
-            </div>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7">
-            <p className="eyebrow mb-5">PROFILE</p>
-            <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
-              의료진 소개
-            </h2>
-
-            <div className="mt-10 space-y-10">
-              <ProfileBlock
-                heading="전문의 자격"
-                items={["대한이비인후과학회 인정 이비인후과 전문의"]}
-              />
-              <ProfileBlock
-                heading="학력 / 수련"
-                items={[
-                  "중앙대학교 의과대학 졸업",
-                  "중앙대학교 의학 석사",
-                  "중앙대학교병원 이비인후과 전공의 수료",
-                ]}
-              />
-              <ProfileBlock
-                heading="학회 활동"
-                items={[
-                  "대한이비인후과학회 정회원",
-                  "대한비과학회 정회원",
-                  "대한이과학회 정회원",
-                  "대한두경부외과학회 정회원",
-                  "대한소아이비인후과학회 정회원",
-                  "대한수면학회 정회원",
-                ]}
-              />
-              <ProfileBlock
-                heading="진료 분야"
-                items={[
-                  "난청 · 이명 · 돌발성 난청",
-                  "어지럼증 · 두통 · 이석증",
-                  "비염 · 축농증 · 코골이 · 수면무호흡",
-                  "아동 청각 · 언어발달 평가",
-                  "기능의학 · 면역 · 영양 클리닉",
-                ]}
-              />
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <Section bg="bone" size="lg">
+      <Section bg="ivory" size="lg">
         <SectionHeader
           eyebrow="OUR APPROACH"
           title={
@@ -168,27 +101,42 @@ export default function AboutPage() {
           ))}
         </div>
       </Section>
-    </>
-  );
-}
 
-function ProfileBlock({
-  heading,
-  items,
-}: {
-  heading: string;
-  items: string[];
-}) {
-  return (
-    <div className="border-t border-line pt-6">
-      <p className="text-taupe text-sm tracking-wider mb-3">{heading}</p>
-      <ul className="space-y-2 text-charcoal/85 font-light">
-        {items.map((it) => (
-          <li key={it} className="leading-relaxed">
-            {it}
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Section bg="bone" size="md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          {[
+            {
+              href: "/about/doctor",
+              eyebrow: "DOCTOR",
+              title: "의료진 소개",
+              desc: "오승리 대표원장의 학력·전공·진료 분야를 자세히 소개해 드립니다.",
+            },
+            {
+              href: "/about/visit",
+              eyebrow: "VISIT",
+              title: "진료안내·오시는 길",
+              desc: "진료시간과 위치, 교통 안내까지 한 번에 확인하실 수 있습니다.",
+            },
+          ].map((c) => (
+            <Link
+              key={c.href}
+              href={c.href}
+              className="group block border border-line bg-ivory p-8 lg:p-10 hover:border-cocoa/40 transition-colors"
+            >
+              <p className="eyebrow mb-3">{c.eyebrow}</p>
+              <h3 className="heading-display text-cocoa text-2xl md:text-3xl">
+                {c.title}
+              </h3>
+              <p className="mt-4 text-mocha font-light leading-relaxed">
+                {c.desc}
+              </p>
+              <p className="mt-6 inline-flex items-center gap-2 text-xs text-cocoa tracking-[0.2em] border-b border-cocoa/30 pb-1 group-hover:border-cocoa transition-colors">
+                READ MORE <span>→</span>
+              </p>
+            </Link>
+          ))}
+        </div>
+      </Section>
+    </>
   );
 }

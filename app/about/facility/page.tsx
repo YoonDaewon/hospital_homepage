@@ -4,10 +4,10 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 
 export const metadata: Metadata = {
-  title: "시설안내",
+  title: "둘러보기",
   description:
-    "숨앤소리 이비인후과의 따뜻하고 정돈된 진료 공간을 소개합니다. 라운지, 리셉션, 진료실, 수면다원검사실까지 환자분의 회복에 집중할 수 있도록 섬세하게 설계했습니다.",
-  alternates: { canonical: "/facility" },
+    "숨앤소리 이비인후과의 따뜻하고 정돈된 진료 공간을 소개합니다. 라운지, 리셉션, 진료실, 수면다원검사실까지.",
+  alternates: { canonical: "/about/facility" },
 };
 
 const facilities: {

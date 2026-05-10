@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { clinics } from "@/lib/clinics";
+import { categories, allSubPagePaths } from "@/lib/categories";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,18 +9,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${base}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/clinic`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${base}/facility`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/examination`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${base}/location`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
+    { url: `${base}/about/doctor`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/about/equipment`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/about/facility`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/about/visit`, lastModified: now, changeFrequency: "yearly", priority: 0.6 },
   ];
 
-  const clinicRoutes: MetadataRoute.Sitemap = clinics.map((c) => ({
-    url: `${base}/clinic/${c.slug}`,
+  const categoryRoutes: MetadataRoute.Sitemap = categories.map((c) => ({
+    url: `${base}/${c.slug}`,
     lastModified: now,
     changeFrequency: "monthly",
-    priority: 0.8,
+    priority: 0.9,
   }));
 
-  return [...staticRoutes, ...clinicRoutes];
+  const subPageRoutes: MetadataRoute.Sitemap = allSubPagePaths().map(
+    ({ category, slug }) => ({
+      url: `${base}/${category}/${slug}`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    }),
+  );
+
+  return [...staticRoutes, ...categoryRoutes, ...subPageRoutes];
 }

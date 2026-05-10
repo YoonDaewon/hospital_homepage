@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { siteConfig } from "@/lib/site-config";
-import { clinics } from "@/lib/clinics";
+import { siteConfig, navigation } from "@/lib/site-config";
 
 export function Footer() {
   return (
@@ -61,55 +60,33 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="md:col-span-3">
+          <div className="md:col-span-5">
             <p className="eyebrow mb-4">CLINIC</p>
-            <ul className="grid grid-cols-1 gap-2 text-sm text-charcoal/80 font-light">
-              {clinics.map((c) => (
-                <li key={c.slug}>
+            <div className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm text-charcoal/80 font-light">
+              {navigation
+                .filter((n) => n.href !== "/about")
+                .map((n) => (
                   <Link
-                    href={`/clinic/${c.slug}`}
+                    key={n.href}
+                    href={n.href}
                     className="hover:text-cocoa transition-colors"
                   >
-                    {c.name}
+                    {n.label}
                   </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="md:col-span-2">
-            <p className="eyebrow mb-4">INFO</p>
-            <ul className="space-y-2 text-sm text-charcoal/80 font-light">
-              <li>
-                <Link href="/about" className="hover:text-cocoa transition-colors">
-                  병원소개
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/facility"
-                  className="hover:text-cocoa transition-colors"
-                >
-                  시설안내
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/examination"
-                  className="hover:text-cocoa transition-colors"
-                >
-                  검사안내
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/location"
-                  className="hover:text-cocoa transition-colors"
-                >
-                  오시는 길
-                </Link>
-              </li>
-            </ul>
+                ))}
+              <Link
+                href="/about"
+                className="hover:text-cocoa transition-colors"
+              >
+                병원소개
+              </Link>
+              <Link
+                href="/about/visit"
+                className="hover:text-cocoa transition-colors"
+              >
+                진료안내·오시는 길
+              </Link>
+            </div>
           </div>
         </div>
 
