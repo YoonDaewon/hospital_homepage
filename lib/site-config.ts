@@ -69,7 +69,6 @@ export const navigation: NavItem[] = [
     children: [
       { label: "난청", href: "/hearing-tinnitus/hearing-loss" },
       { label: "이명", href: "/hearing-tinnitus/tinnitus" },
-      { label: "보청기", href: "/hearing-tinnitus/hearing-aid" },
       { label: "청각장애 진단", href: "/hearing-tinnitus/disability-diagnosis" },
     ],
   },
@@ -85,6 +84,7 @@ export const navigation: NavItem[] = [
     label: "수면질환",
     href: "/sleep",
     children: [
+      { label: "수면질환", href: "/sleep/disorders" },
       { label: "수면다원검사", href: "/sleep/polysomnography" },
       { label: "코골이·수면무호흡증", href: "/sleep/snoring-osa" },
       { label: "불면증", href: "/sleep/insomnia" },
@@ -98,9 +98,16 @@ export const navigation: NavItem[] = [
     href: "/ent",
     children: [
       { label: "비염·축농증", href: "/ent/rhinitis-sinusitis" },
-      { label: "코골이·수면무호흡증", href: "/ent/snoring" },
       { label: "후두·음성질환", href: "/ent/voice" },
       { label: "기능의학", href: "/ent/functional-medicine" },
+    ],
+  },
+  {
+    label: "수술·수액",
+    href: "/surgery-iv",
+    children: [
+      { label: "비·구강 시술", href: "/surgery-iv/procedures" },
+      { label: "영양·면역 수액", href: "/surgery-iv/iv-therapy" },
     ],
   },
 ];

@@ -8,9 +8,9 @@ type Slide = {
   imageAlt: string;
 };
 
-// 이미지 교체: /public/images/main/main1.jpg ~ main5.jpg
+// 이미지 교체: /public/images/main/main1.png, main2~5.jpg
 const slides: Slide[] = [
-  { image: "/images/main/main1.jpg", imageAlt: "숨앤소리 이비인후과 메인 비주얼 1" },
+  { image: "/images/main/main1.png", imageAlt: "숨앤소리 이비인후과 메인 비주얼 1" },
   { image: "/images/main/main2.jpg", imageAlt: "숨앤소리 이비인후과 메인 비주얼 2" },
   { image: "/images/main/main3.jpg", imageAlt: "숨앤소리 이비인후과 메인 비주얼 3" },
   { image: "/images/main/main4.jpg", imageAlt: "숨앤소리 이비인후과 메인 비주얼 4" },

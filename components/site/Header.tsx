@@ -45,7 +45,7 @@ export function Header() {
               priority
             />
             <span className="flex items-baseline gap-2">
-              <span className="font-serif text-lg sm:text-xl lg:text-2xl tracking-tight text-cocoa">
+              <span className="font-sans font-bold text-xl sm:text-2xl lg:text-[26px] tracking-tight text-cocoa">
                 숨앤소리
               </span>
               <span className="hidden sm:inline text-[11px] tracking-[0.25em] text-taupe font-light">
@@ -171,9 +171,9 @@ function MobileMenu({
               height={28}
               className="w-7 h-7 object-contain"
             />
-            <span className="font-serif text-lg text-cocoa tracking-tight">
+            <span className="font-sans font-bold text-xl text-cocoa tracking-tight">
               숨앤소리
-              <span className="ml-2 text-[10px] tracking-[0.25em] text-taupe">
+              <span className="ml-2 text-[10px] tracking-[0.25em] text-taupe font-light">
                 ENT
               </span>
             </span>

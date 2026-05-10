@@ -17,11 +17,10 @@ export default function VisitPage() {
   return (
     <>
       <PageHero
+        plain
         eyebrow="VISIT"
         title="진료안내 · 오시는 길"
         subtitle="역삼역 2번 출구에서 도보 1분, 일상의 동선 위에 있습니다."
-        image="/images/aboutHero.jpg"
-        imageAlt="숨앤소리 이비인후과 진료안내"
       />
 
       <Section bg="bone" size="md">

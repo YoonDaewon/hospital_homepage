@@ -14,11 +14,10 @@ export default function DoctorPage() {
   return (
     <>
       <PageHero
+        plain
         eyebrow="DOCTOR"
         title="듣는 일에서, 가장 깊이 시작하는 진료"
         subtitle="환자분의 이야기를 끝까지 듣고, 그 이야기 위에서 진료를 설계합니다."
-        image="/images/aboutHero.jpg"
-        imageAlt="숨앤소리 이비인후과 의료진"
       />
 
       <Section bg="bone" size="lg">

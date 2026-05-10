@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/ui/PageHero";
-import { Section, SectionHeader } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { MediaFrame } from "@/components/ui/MediaFrame";
 
 export const metadata: Metadata = {
@@ -56,11 +56,10 @@ export default function FacilityPage() {
   return (
     <>
       <PageHero
+        plain
         eyebrow="FACILITY"
         title="머무는 시간이 회복이 되는 공간"
         subtitle="진료실 너머의 동선과 분위기까지, 환자분의 마음이 편해지는 모든 디테일을 살폈습니다."
-        image="/images/facility/lounge.jpeg"
-        imageAlt="숨앤소리 이비인후과 라운지"
       />
 
       <Section bg="bone" size="md">
@@ -102,31 +101,6 @@ export default function FacilityPage() {
         </div>
       </Section>
 
-      <Section bg="ivory" size="md">
-        <SectionHeader
-          eyebrow="MATERIAL & MOOD"
-          title={
-            <>
-              자연의 톤,
-              <br className="md:hidden" />
-              따뜻한 무드
-            </>
-          }
-          desc="베이지·아이보리·우드의 조화 속에서, 가장 자연스러운 호흡을 되찾으실 수 있도록 색과 질감을 골랐습니다."
-          align="center"
-        />
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {facilities.map((f) => (
-            <MediaFrame
-              key={`mood-${f.src}`}
-              src={f.src}
-              alt={f.alt}
-              aspect="square"
-              sizes="(max-width: 768px) 50vw, 25vw"
-            />
-          ))}
-        </div>
-      </Section>
     </>
   );
 }

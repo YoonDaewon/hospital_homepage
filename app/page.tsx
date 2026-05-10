@@ -23,6 +23,7 @@ const clinicImages: Record<string, { src: string; alt: string }> = {
   "dizziness-headache": { src: "/images/clinic/headache.jpg", alt: "어지럼증·두통 클리닉" },
   sleep: { src: "/images/clinic/sleep.png", alt: "수면질환 클리닉" },
   ent: { src: "/images/clinic/enp.jpg", alt: "이비인후과 클리닉" },
+  "surgery-iv": { src: "/images/clinic/surgery.jpg", alt: "수술·수액 클리닉" },
 };
 
 function ClinicsSection() {
@@ -38,7 +39,7 @@ function ClinicsSection() {
         }
         desc="이비인후과 영역의 모든 증상을 깊이 있게 다루기 위해, 클리닉별로 전문화된 진료 시스템을 갖추었습니다."
       />
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
         {categories.map((c, i) => {
           const img = clinicImages[c.slug];
           return (
@@ -48,13 +49,21 @@ function ClinicsSection() {
             className="group block"
           >
             <div className="overflow-hidden">
-              <MediaFrame
-                src={img.src}
-                alt={img.alt}
-                aspect="video"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="transition-transform duration-700 group-hover:scale-[1.02]"
-              />
+              {img ? (
+                <MediaFrame
+                  src={img.src}
+                  alt={img.alt}
+                  aspect="video"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              ) : (
+                <Placeholder
+                  aspect="video"
+                  tone={i % 2 === 0 ? "warm" : "soft"}
+                  className="transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+              )}
             </div>
             <div className="mt-6">
               <p className="font-serif italic text-taupe text-xs tracking-[0.2em]">

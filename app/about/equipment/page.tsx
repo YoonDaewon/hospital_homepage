@@ -63,11 +63,10 @@ export default function EquipmentPage() {
   return (
     <>
       <PageHero
+        plain
         eyebrow="EQUIPMENT"
         title="정확한 진단을 위한, 정밀한 장비"
         subtitle="대학병원 수준의 검사 장비와 표준 프로토콜을 갖추고, 증상의 근본 원인을 찾기 위해 깊이 살핍니다."
-        image="/images/examinationHero.jpg"
-        imageAlt="숨앤소리 이비인후과 장비 안내"
       />
 
       <Section bg="bone" size="md">

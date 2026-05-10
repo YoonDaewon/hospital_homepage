@@ -6,7 +6,7 @@ export const hearingTinnitus: Category = {
   nameEn: "Hearing & Tinnitus",
   tagline: "들리지 않는 소리, 사라지지 않는 소리",
   intro:
-    "청각은 단순히 듣는 감각을 넘어, 사람과 사람을 잇는 가장 섬세한 통로입니다. 숨앤소리 이비인후과는 정밀한 청각 평가와 단계별 맞춤 치료, 그리고 보청기와 사후관리까지 — 잃어버린 소리의 결을 천천히 되찾아 드립니다.",
+    "청각은 단순히 듣는 감각을 넘어, 사람과 사람을 잇는 가장 섬세한 통로입니다. 숨앤소리 이비인후과는 정밀한 청각 평가와 단계별 맞춤 치료, 그리고 청각장애 진단까지 — 잃어버린 소리의 결을 천천히 되찾아 드립니다.",
   pages: [
     {
       slug: "hearing-loss",
@@ -16,6 +16,12 @@ export const hearingTinnitus: Category = {
       summary:
         "원인에 따라 치료의 골든타임이 달라지는 난청. 정밀 청력검사로 유형을 가려내고, 회복이 가능한 단계에서 가장 적절한 처치를 시작합니다.",
       keywords: ["난청", "돌발성 난청", "전음성 난청", "감각신경성 난청", "청력검사"],
+      contentImage: {
+        src: "/images/contents/hearing-loss.png",
+        alt: "난청 안내",
+        width: 1184,
+        height: 3546,
+      },
       sections: [
         {
           kind: "overview",
@@ -119,6 +125,12 @@ export const hearingTinnitus: Category = {
       summary:
         "삐~, 윙~, 매미 소리. 이명은 단순한 증상이 아닌, 청각 경로 전체의 신호입니다. 원인 평가와 인지·재활 치료로 일상의 고요를 회복합니다.",
       keywords: ["이명", "귀울림", "이명재활치료", "TRT"],
+      contentImage: {
+        src: "/images/contents/tinnitus.png",
+        alt: "이명 안내",
+        width: 1120,
+        height: 3676,
+      },
       sections: [
         {
           kind: "overview",
@@ -207,95 +219,6 @@ export const hearingTinnitus: Category = {
       ],
     },
     {
-      slug: "hearing-aid",
-      name: "보청기",
-      nameEn: "Hearing Aid",
-      tagline: "다시, 또렷하게 듣는 즐거움",
-      summary:
-        "보청기는 단순히 소리를 키우는 기기가 아닙니다. 청력 패턴과 일상의 소리 환경에 맞춰 정밀하게 조율되어야 합니다.",
-      keywords: ["보청기", "보청기 추천", "보청기 피팅", "강남 보청기"],
-      sections: [
-        {
-          kind: "overview",
-          body: [
-            "보청기는 환자분의 청력 패턴을 보완하는 ‘맞춤형 의료기기’입니다. 단순한 증폭이 아니라, 어떤 주파수에서 얼마나 들리지 않는지를 정밀하게 분석한 뒤, 환자의 일상에서 가장 자주 듣는 소리에 맞게 조율되어야 비로소 ‘듣기 쉬운 소리’가 됩니다.",
-            "숨앤소리 이비인후과는 의료진의 정밀 청력 평가를 기반으로 보청기를 선택하고, 적응 기간의 시연·재조율, 그리고 평생 사후관리를 책임집니다.",
-          ],
-        },
-        {
-          kind: "causes",
-          heading: "이런 분들께 권합니다",
-          cards: [
-            {
-              title: "되묻는 일이 잦아진 분",
-              desc: "대화 중 같은 말을 두 번 이상 묻게 되는 일이 잦아졌다면, 보청기 상담 시점입니다.",
-            },
-            {
-              title: "TV 소리가 점점 커지는 분",
-              desc: "가족이 ‘TV 소리가 크다’고 자주 말한다면, 청력 변화의 신호일 수 있습니다.",
-            },
-            {
-              title: "여러 명이 모인 자리가 어려운 분",
-              desc: "조용한 자리에선 괜찮지만 여러 사람의 목소리가 겹치면 알아듣기 어려운 분.",
-            },
-            {
-              title: "이명을 함께 겪는 분",
-              desc: "보청기는 이명의 인식 강도를 줄이는 데 도움이 되기도 합니다. 이명 재활과 함께 설계할 수 있습니다.",
-            },
-          ],
-        },
-        {
-          kind: "diagnosis",
-          heading: "보청기 처방 과정",
-          steps: [
-            {
-              step: "01",
-              title: "정밀 청력 평가",
-              desc: "순음·어음 청력검사, 임피던스 검사로 청력 패턴을 측정하고, 보청기 적응증과 기대 효과를 평가합니다.",
-            },
-            {
-              step: "02",
-              title: "라이프스타일 상담",
-              desc: "주로 머무는 환경, 자주 듣는 소리, 기대하는 활동을 함께 정리해 가장 적합한 형태와 기능을 추천합니다.",
-            },
-            {
-              step: "03",
-              title: "정밀 피팅 (REM 포함)",
-              desc: "실이측정(REM)으로 보청기에서 나오는 실제 음압을 외이도에서 측정해, 환자의 귀에 정확히 맞추어 조율합니다.",
-            },
-            {
-              step: "04",
-              title: "적응 기간 시연",
-              desc: "약 1개월의 적응 기간 동안 일상에서 사용해 보시고, 정기적인 재조율로 가장 자연스러운 소리를 찾아갑니다.",
-            },
-          ],
-        },
-        {
-          kind: "treatment",
-          heading: "사후관리",
-          programs: [
-            {
-              title: "정기 청력 재평가",
-              desc: "청력은 시간이 지나며 변합니다. 정기적인 재평가로 보청기 설정을 업데이트합니다.",
-            },
-            {
-              title: "보청기 정비·청소",
-              desc: "정기적인 점검과 청소로 음질과 수명을 유지합니다.",
-            },
-            {
-              title: "재조율·기능 보강",
-              desc: "환자의 청력 변화나 생활 환경의 변화에 따라 보청기 설정을 다시 조율합니다.",
-            },
-          ],
-        },
-        {
-          kind: "closing",
-          quote:
-            "보청기는 한 번의 구매가 아닌, 평생을 함께 가는 동행입니다. 끝까지 책임지겠습니다.",
-        },
-      ],
-    },
-    {
       slug: "disability-diagnosis",
       name: "청각장애 진단",
       nameEn: "Hearing Disability Diagnosis",
@@ -303,6 +226,12 @@ export const hearingTinnitus: Category = {
       summary:
         "청각장애 진단서 발급에 필요한 정밀 청력검사와 의무 기록을 안내합니다. 표준 검사 프로토콜과 충분한 상담을 거쳐 진행합니다.",
       keywords: ["청각장애 진단", "장애진단서", "청력검사", "청각 등록"],
+      contentImage: {
+        src: "/images/contents/disability-diagnosis.png",
+        alt: "청각장애 진단 안내",
+        width: 1312,
+        height: 3168,
+      },
       sections: [
         {
           kind: "overview",

@@ -16,6 +16,12 @@ export const dizzinessHeadache: Category = {
       summary:
         "이석증, 메니에르병, 전정신경염, 편두통성 어지럼증 — 어지럼증의 원인은 다양하고 치료 또한 다릅니다. 정밀 전정기능 검사로 원인을 가려냅니다.",
       keywords: ["어지럼증", "이석증", "메니에르", "전정기능검사", "이석정복술"],
+      contentImage: {
+        src: "/images/contents/dizziness.png",
+        alt: "어지럼증 안내",
+        width: 1120,
+        height: 3676,
+      },
       sections: [
         {
           kind: "overview",
@@ -118,6 +124,12 @@ export const dizzinessHeadache: Category = {
       summary:
         "편두통, 긴장형 두통, 군발성 두통, 그리고 비염·부비동염에서 비롯되는 두통까지. 두통의 유형을 가려내야 적절한 치료가 시작됩니다.",
       keywords: ["두통", "편두통", "부비동성 두통", "긴장형 두통"],
+      contentImage: {
+        src: "/images/contents/headache.png",
+        alt: "두통 안내",
+        width: 1408,
+        height: 3022,
+      },
       sections: [
         {
           kind: "overview",

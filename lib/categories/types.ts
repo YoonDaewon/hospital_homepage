@@ -63,10 +63,17 @@ export type SubPage = {
   keywords?: string[];
   hero?: { image?: string; imageAlt?: string };
   sections: PageSection[];
+  /** 본문을 이미지 한 장으로 대체 (있으면 sections는 렌더링되지 않음) */
+  contentImage?: { src: string; alt?: string; width: number; height: number };
 };
 
 export type Category = {
-  slug: "hearing-tinnitus" | "dizziness-headache" | "sleep" | "ent";
+  slug:
+    | "hearing-tinnitus"
+    | "dizziness-headache"
+    | "sleep"
+    | "ent"
+    | "surgery-iv";
   name: string;
   nameEn: string;
   tagline: string;

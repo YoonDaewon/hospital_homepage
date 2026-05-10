@@ -10,6 +10,8 @@ type PageHeroProps = {
   image?: string;
   imageAlt?: string;
   className?: string;
+  /** 이미지·그라데이션 없이 텍스트만 보여주는 헤더 */
+  plain?: boolean;
 };
 
 export function PageHero({
@@ -20,7 +22,33 @@ export function PageHero({
   image,
   imageAlt,
   className,
+  plain,
 }: PageHeroProps) {
+  if (plain) {
+    return (
+      <section
+        className={cn(
+          "bg-bone pt-32 lg:pt-40 pb-12 lg:pb-16 border-b border-line",
+          className,
+        )}
+      >
+        <div className="container-content">
+          <p className="font-serif italic text-taupe tracking-[0.3em] text-xs lg:text-sm">
+            {eyebrow}
+          </p>
+          <h1 className="mt-5 heading-display text-cocoa text-4xl md:text-5xl lg:text-6xl">
+            {title}
+          </h1>
+          {subtitle && (
+            <p className="mt-6 text-mocha text-base md:text-lg max-w-2xl font-light leading-relaxed">
+              {subtitle}
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section
       className={cn(

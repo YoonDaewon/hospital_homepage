@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { PageHero } from "@/components/ui/PageHero";
 import { Section, SectionHeader } from "@/components/ui/Section";
 
 export const metadata: Metadata = {
@@ -13,13 +13,16 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="ABOUT US"
-        title="우리는, 듣는 일에서부터 시작합니다."
-        subtitle="환자분이 들려주시는 작은 이야기 하나하나가, 가장 정확한 진료의 출발점입니다."
-        image="/images/aboutHero.jpg"
-        imageAlt="숨앤소리 이비인후과 병원 소개"
-      />
+      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-bone">
+        <Image
+          src="/images/main/main1.png"
+          alt="숨앤소리 이비인후과"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+      </section>
 
       <Section bg="bone" size="lg">
         <div className="max-w-3xl mx-auto">
