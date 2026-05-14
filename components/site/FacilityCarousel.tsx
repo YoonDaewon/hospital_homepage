@@ -9,10 +9,14 @@ type Slide = {
 };
 
 const slides: Slide[] = [
-  { src: "/images/facility/lounge.jpeg", title: "라운지" },
+  { src: "/images/facility/entrance.jpg", title: "입구" },
   { src: "/images/facility/reception.jpeg", title: "리셉션" },
-  { src: "/images/facility/consultation.jpeg", title: "진료실" },
-  { src: "/images/facility/sleep-room.jpeg", title: "수면 다원검사실" },
+  { src: "/images/facility/lounge1.jpeg", title: "라운지" },
+  { src: "/images/facility/lounge2.jpg", title: "라운지" },
+  { src: "/images/facility/lounge3.jpg", title: "라운지" },
+  { src: "/images/facility/corridor1.jpg", title: "복도" },
+  { src: "/images/facility/sleep-room1.jpeg", title: "수면 다원검사실" },
+  { src: "/images/facility/sleep-room2.jpg", title: "수면 다원검사실" },
 ];
 
 export function FacilityCarousel() {

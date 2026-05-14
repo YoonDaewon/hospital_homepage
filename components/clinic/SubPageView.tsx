@@ -26,7 +26,7 @@ export function SubPageView({
 
       <PageSections sections={page.sections} />
 
-      <Section bg="ivory" size="md">
+      <Section bg="ivory" size="sm">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           <div>
             <p className="eyebrow mb-4">CONSULT</p>
@@ -60,7 +60,7 @@ export function SubPageView({
       </Section>
 
       {others.length > 0 && (
-        <Section bg="bone" size="md">
+        <Section bg="bone" size="sm">
           <div className="mb-10">
             <p className="eyebrow mb-3">RELATED</p>
             <h2 className="heading-display text-cocoa text-2xl md:text-3xl">

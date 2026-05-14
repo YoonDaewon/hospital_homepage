@@ -56,10 +56,9 @@ export const navigation: NavItem[] = [
     label: "병원소개",
     href: "/about",
     children: [
-      { label: "인사말", href: "/about" },
+      { label: "숨앤소리 이비인후과", href: "/about" },
       { label: "의료진 소개", href: "/about/doctor" },
       { label: "장비 소개", href: "/about/equipment" },
-      { label: "둘러보기", href: "/about/facility" },
       { label: "진료안내·오시는 길", href: "/about/visit" },
     ],
   },

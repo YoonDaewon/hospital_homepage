@@ -1,176 +1,133 @@
 import type { Metadata } from "next";
-import { PageHero } from "@/components/ui/PageHero";
-import { Section } from "@/components/ui/Section";
+import Image from "next/image";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "진료안내·오시는 길",
-  description: `${siteConfig.name} 진료시간 및 위치 안내. 강남구 역삼동, 역삼역 2번 출구에서 도보 1분 거리. 대중교통·주차 안내 및 진료시간 정보.`,
+  title: "진료안내 · 오시는 길",
+  description: `${siteConfig.name} 진료시간 및 위치 안내. 강남구 역삼동, 역삼역 2번 출구에서 도보 1분. 대중교통·주차 안내 및 진료시간 정보.`,
   alternates: { canonical: "/about/visit" },
 };
 
 const mapQuery = encodeURIComponent("역삼역 2번 출구");
-const naverMapUrl = `https://map.naver.com/p/search/${mapQuery}`;
-const kakaoMapUrl = `https://map.kakao.com/?q=${mapQuery}`;
+
+const hours = [
+  { label: "평일", time: "AM 09:30 ~ PM 18:30" },
+  { label: "점심시간", time: "PM 13:00 ~ PM 14:00" },
+  { label: "토요일", time: "AM 09:30 ~ PM 13:30" },
+  { label: "일요일 / 공휴일", time: "휴진" },
+];
 
 export default function VisitPage() {
   return (
     <>
-      <PageHero
-        plain
-        eyebrow="VISIT"
-        title="진료안내 · 오시는 길"
-        subtitle="역삼역 2번 출구에서 도보 1분, 일상의 동선 위에 있습니다."
-      />
+      {/* Title Section — same INTRODUCE CLINIC header */}
+      <section className="pt-28 sm:pt-32 lg:pt-36 pb-10 lg:pb-14 bg-bone text-center">
+        <p className="font-sans text-brand tracking-[0.35em] text-xs sm:text-[13px] font-bold mb-3 sm:mb-4">
+          INTRODUCE CLINIC
+        </p>
+        <h1 className="font-sans text-4xl sm:text-5xl lg:text-[60px] tracking-tight font-extrabold">
+          <span className="text-brand">숨앤소리</span>{" "}
+          <span className="text-cocoa">이비인후과</span>
+        </h1>
+      </section>
 
-      <Section bg="bone" size="md">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-          <div>
-            <p className="eyebrow mb-4">HOURS</p>
-            <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
-              진료시간
+      {/* 진료안내 */}
+      <section className="bg-bone pb-12 lg:pb-20">
+        <div className="container-content">
+          <div className="text-center mb-10 lg:mb-14">
+            <h2 className="font-sans font-extrabold text-cocoa text-3xl sm:text-4xl lg:text-[44px] tracking-tight">
+              진료안내
             </h2>
-            <dl className="mt-10 space-y-5 text-charcoal font-light">
-              {siteConfig.hours.map((h) => (
-                <div
-                  key={h.label}
-                  className="flex gap-6 border-b border-line pb-4"
-                >
-                  <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">
-                    {h.label}
-                  </dt>
-                  <dd>{h.display}</dd>
-                </div>
-              ))}
-              <div className="flex gap-6 border-b border-line pb-4">
-                <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">휴진</dt>
-                <dd>{siteConfig.closedDays}</dd>
-              </div>
-              <div className="flex gap-6">
-                <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">
-                  점심
-                </dt>
-                <dd className="text-charcoal/70">{siteConfig.lunch}</dd>
-              </div>
-            </dl>
+            <span
+              aria-hidden
+              className="block w-10 h-[3px] bg-cocoa mx-auto mt-5 rounded-full"
+            />
           </div>
-          <div>
-            <p className="eyebrow mb-4">CONTACT</p>
-            <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
-              연락처
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 items-stretch overflow-hidden">
+            {/* LEFT — image */}
+            <div className="relative aspect-[4/3] lg:aspect-auto lg:min-h-[540px]">
+              <Image
+                src="/images/introduction/lounge2.jpg"
+                alt="숨앤소리 이비인후과 라운지"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+
+            {/* RIGHT — brand-blue info card */}
+            <div className="bg-brand text-bone px-8 sm:px-10 lg:px-14 py-12 lg:py-14 flex flex-col justify-center">
+              <span className="inline-block self-start px-5 py-1.5 rounded-full border border-bone/65 text-[13px] lg:text-sm font-semibold tracking-wide">
+                상담 및 예약문의
+              </span>
+              <a
+                href={`tel:${siteConfig.phone}`}
+                className="mt-5 text-4xl sm:text-[42px] lg:text-[48px] font-extrabold tracking-tight hover:opacity-90 transition-opacity"
+              >
+                {siteConfig.phoneDisplay}
+              </a>
+
+              <span className="inline-block self-start mt-10 px-5 py-1.5 rounded-full border border-bone/65 text-[13px] lg:text-sm font-semibold tracking-wide">
+                운영시간
+              </span>
+              <dl className="mt-6">
+                {hours.map((h, i) => (
+                  <div
+                    key={h.label}
+                    className={`flex items-center justify-between py-3.5 ${
+                      i < hours.length - 1 ? "border-b border-bone/30" : ""
+                    }`}
+                  >
+                    <dt className="flex items-center gap-2.5 text-[14.5px] lg:text-[15.5px] font-medium">
+                      <span
+                        aria-hidden
+                        className="w-1.5 h-1.5 rounded-full bg-bone/90"
+                      />
+                      {h.label}
+                    </dt>
+                    <dd className="text-[15px] lg:text-base font-bold tracking-tight">
+                      {h.time}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-5 text-[12.5px] lg:text-[13px] text-bone/75 leading-relaxed">
+                ※ 토요일 점심시간 없이 진료
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 오시는 길 */}
+      <section className="bg-bone pb-16 lg:pb-24">
+        <div className="container-content">
+          <div className="text-center mb-10 lg:mb-14">
+            <h2 className="font-sans font-extrabold text-cocoa text-3xl sm:text-4xl lg:text-[44px] tracking-tight">
+              오시는 길
             </h2>
-            <dl className="mt-10 space-y-5 text-charcoal font-light">
-              <div className="flex gap-6 border-b border-line pb-4">
-                <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">대표</dt>
-                <dd>
-                  <a
-                    href={`tel:${siteConfig.phone}`}
-                    className="tracking-wider hover:text-cocoa text-2xl"
-                  >
-                    {siteConfig.phoneDisplay}
-                  </a>
-                </dd>
-              </div>
-              <div className="flex gap-6 border-b border-line pb-4">
-                <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">주소</dt>
-                <dd>{siteConfig.address}</dd>
-              </div>
-              <div className="flex gap-6">
-                <dt className="text-taupe w-16 shrink-0 text-sm pt-0.5">
-                  이메일
-                </dt>
-                <dd>
-                  <a
-                    href={`mailto:${siteConfig.email}`}
-                    className="hover:text-cocoa"
-                  >
-                    {siteConfig.email}
-                  </a>
-                </dd>
-              </div>
-            </dl>
+            <span
+              aria-hidden
+              className="block w-10 h-[3px] bg-cocoa mx-auto mt-5 rounded-full"
+            />
           </div>
-        </div>
-      </Section>
 
-      <Section bg="ivory" size="md">
-        <p className="eyebrow mb-4">LOCATION</p>
-        <h2 className="heading-display text-cocoa text-3xl md:text-4xl mb-10">
-          오시는 길
-        </h2>
-        <div className="aspect-[16/10] md:aspect-[21/9] w-full overflow-hidden border border-line bg-bone">
-          <iframe
-            title="숨앤소리 이비인후과 위치"
-            src={`https://maps.google.com/maps?q=${mapQuery}&hl=ko&z=17&output=embed`}
-            className="w-full h-full"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href={naverMapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 py-3 border border-cocoa/40 text-cocoa text-sm tracking-wider hover:bg-cocoa hover:text-bone transition-all"
-          >
-            네이버 지도로 보기 <span>→</span>
-          </a>
-          <a
-            href={kakaoMapUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 py-3 border border-cocoa/40 text-cocoa text-sm tracking-wider hover:bg-cocoa hover:text-bone transition-all"
-          >
-            카카오 지도로 보기 <span>→</span>
-          </a>
-        </div>
+          <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] lg:aspect-[21/9] border border-line overflow-hidden bg-bone">
+            <iframe
+              title="숨앤소리 이비인후과 위치"
+              src={`https://maps.google.com/maps?q=${mapQuery}&hl=ko&z=17&output=embed`}
+              className="absolute inset-0 w-full h-full"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
 
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-10">
-          <DirectionBlock
-            label="지하철"
-            lines={[
-              "2호선 역삼역 2번 출구 도보 1분",
-              "분당선 선릉역에서 도보 8분",
-            ]}
-          />
-          <DirectionBlock
-            label="버스"
-            lines={[
-              "역삼역 정류장: 간선 146·341·360, 지선 4419 등",
-              "GS타워 정류장: 광역 9404, 간선 360 등",
-            ]}
-          />
-          <DirectionBlock
-            label="자가용"
-            lines={[
-              "건물 내 주차장 이용 가능 (진료 시 2시간 무료)",
-              "주변 공영주차장 이용 가능",
-            ]}
-          />
+          <p className="mt-6 text-center text-charcoal/85 font-medium text-[15px] lg:text-base leading-relaxed">
+            {siteConfig.address}
+          </p>
         </div>
-      </Section>
+      </section>
     </>
-  );
-}
-
-function DirectionBlock({
-  label,
-  lines,
-}: {
-  label: string;
-  lines: string[];
-}) {
-  return (
-    <div className="border-t border-line-strong pt-6">
-      <p className="text-taupe text-sm tracking-wider mb-4">{label}</p>
-      <ul className="space-y-2 text-charcoal/85 font-light">
-        {lines.map((l) => (
-          <li key={l} className="leading-relaxed">
-            {l}
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

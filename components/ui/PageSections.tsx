@@ -55,7 +55,7 @@ function Overview({
   const hasMedia = !!section.image || !!section.imageAlt;
   if (hasMedia) {
     return (
-      <Section bg={bg} size="md">
+      <Section bg={bg} size="sm">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-32">
             {section.image ? (
@@ -76,7 +76,7 @@ function Overview({
     );
   }
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="max-w-3xl">
         <OverviewText section={section} />
       </div>
@@ -120,7 +120,7 @@ function Symptoms({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5">
           <p className="eyebrow mb-4">{section.eyebrow ?? "SYMPTOMS"}</p>
@@ -175,7 +175,7 @@ function Causes({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="max-w-2xl mb-14">
         <p className="eyebrow mb-4">{section.eyebrow ?? "CAUSES"}</p>
         <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
@@ -214,7 +214,7 @@ function Diagnosis({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="max-w-2xl mb-14">
         <p className="eyebrow mb-4">{section.eyebrow ?? "DIAGNOSIS"}</p>
         <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
@@ -256,7 +256,7 @@ function Treatment({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="max-w-2xl mb-14">
         <p className="eyebrow mb-4">{section.eyebrow ?? "TREATMENT"}</p>
         <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
@@ -298,7 +298,7 @@ function Prevention({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <div className="lg:col-span-5">
           <p className="eyebrow mb-4">{section.eyebrow ?? "PREVENTION"}</p>
@@ -341,7 +341,7 @@ function Faq({
   bg: "bone" | "ivory" | "sand";
 }) {
   return (
-    <Section bg={bg} size="md">
+    <Section bg={bg} size="sm">
       <div className="max-w-2xl mb-12">
         <p className="eyebrow mb-4">{section.eyebrow ?? "FAQ"}</p>
         <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
@@ -395,7 +395,7 @@ function Closing({
   section: Extract<PageSection, { kind: "closing" }>;
 }) {
   return (
-    <Section bg="sand" size="md">
+    <Section bg="sand" size="sm">
       <div className="max-w-3xl mx-auto text-center">
         <p className="eyebrow mb-6">{section.eyebrow ?? "OUR PROMISE"}</p>
         <p className="font-serif italic text-cocoa text-2xl md:text-3xl lg:text-[34px] leading-[1.5]">
