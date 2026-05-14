@@ -20,21 +20,21 @@ export function Header() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-bone border-b border-line">
-        <div className="container-content flex items-center justify-between h-14 sm:h-16 lg:h-[72px]">
+        <div className="container-content flex items-center justify-between h-[68px] sm:h-[76px] lg:h-[84px]">
           <Link href="/" className="flex items-center gap-2.5" onClick={closeMobile}>
             <Image
               src="/images/icon_v1.png"
               alt=""
               width={36}
               height={36}
-              className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 object-contain"
+              className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 object-contain"
               priority
             />
-            <span className="flex items-baseline gap-2">
-              <span className="font-sans font-bold text-lg sm:text-xl lg:text-[22px] tracking-tight text-cocoa">
+            <span className="flex items-baseline gap-2.5">
+              <span className="font-sans font-bold text-2xl sm:text-[26px] lg:text-[28px] tracking-tight text-brand">
                 숨앤소리
               </span>
-              <span className="hidden sm:inline text-[11px] tracking-[0.25em] text-taupe font-light">
+              <span className="hidden sm:inline text-[13px] tracking-[0.2em] text-cocoa/70 font-semibold">
                 ENT CLINIC
               </span>
             </span>
@@ -45,7 +45,7 @@ export function Header() {
               <div key={item.label} className="relative group">
                 <Link
                   href={item.href}
-                  className="px-4 py-2 text-[14px] text-charcoal hover:text-cocoa transition-colors"
+                  className="px-4 py-2.5 text-[16px] font-semibold text-charcoal hover:text-cocoa transition-colors"
                 >
                   {item.label}
                 </Link>
@@ -136,18 +136,18 @@ function MobileMenu({
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between h-16 sm:h-20 px-6 border-b border-line">
-          <span className="flex items-center gap-2">
+        <div className="flex items-center justify-between h-[68px] sm:h-[76px] px-6 border-b border-line">
+          <span className="flex items-center gap-2.5">
             <Image
               src="/images/icon_v1.png"
               alt=""
-              width={28}
-              height={28}
-              className="w-7 h-7 object-contain"
+              width={32}
+              height={32}
+              className="w-8 h-8 object-contain"
             />
-            <span className="font-sans font-bold text-xl text-cocoa tracking-tight">
+            <span className="font-sans font-bold text-[22px] text-brand tracking-tight">
               숨앤소리
-              <span className="ml-2 text-[10px] tracking-[0.25em] text-taupe font-light">
+              <span className="ml-2 text-[12px] tracking-[0.2em] text-cocoa/70 font-semibold">
                 ENT
               </span>
             </span>
@@ -172,7 +172,7 @@ function MobileMenu({
                 <Link
                   href={item.href}
                   onClick={onClose}
-                  className="block text-lg text-cocoa font-light"
+                  className="block text-[18px] text-cocoa font-semibold"
                 >
                   {item.label}
                 </Link>
@@ -183,7 +183,7 @@ function MobileMenu({
                         <Link
                           href={child.href}
                           onClick={onClose}
-                          className="block text-sm text-mocha"
+                          className="block text-[15px] text-charcoal/80 font-medium"
                         >
                           — {child.label}
                         </Link>

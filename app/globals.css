@@ -10,10 +10,12 @@
   --color-cocoa: #3e342b;
   --color-charcoal: #2a2520;
 
+  --color-brand: #4c84b7;
+
   --color-line: rgba(62, 52, 43, 0.12);
   --color-line-strong: rgba(62, 52, 43, 0.22);
 
-  --font-sans: var(--font-noto-sans-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans: "Pretendard Variable", Pretendard, var(--font-noto-sans-kr), "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --font-serif: var(--font-cormorant), "Noto Serif KR", serif;
 
   --container-content: 1200px;
@@ -35,7 +37,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.01em;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

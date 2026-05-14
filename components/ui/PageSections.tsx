@@ -4,14 +4,18 @@ import { Placeholder } from "./Placeholder";
 import type { PageSection } from "@/lib/categories/types";
 
 export function PageSections({ sections }: { sections: PageSection[] }) {
-  const bgs: ("bone" | "ivory" | "sand")[] = ["bone", "ivory", "bone", "ivory", "bone", "sand"];
   return (
     <>
       {sections.map((s, i) => (
-        <SectionRenderer key={i} section={s} bg={bgs[i % bgs.length]} />
+        <SectionRenderer key={i} section={s} bg={bgFor(s, i)} />
       ))}
     </>
   );
+}
+
+function bgFor(section: PageSection, idx: number): "bone" | "ivory" | "sand" {
+  if (section.kind === "closing") return "sand";
+  return idx % 2 === 0 ? "bone" : "ivory";
 }
 
 function SectionRenderer({
@@ -32,6 +36,10 @@ function SectionRenderer({
       return <Diagnosis section={section} bg={bg} />;
     case "treatment":
       return <Treatment section={section} bg={bg} />;
+    case "prevention":
+      return <Prevention section={section} bg={bg} />;
+    case "faq":
+      return <Faq section={section} bg={bg} />;
     case "closing":
       return <Closing section={section} />;
   }
@@ -44,41 +52,63 @@ function Overview({
   section: Extract<PageSection, { kind: "overview" }>;
   bg: "bone" | "ivory" | "sand";
 }) {
-  return (
-    <Section bg={bg} size="md">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <div className="lg:col-span-5 lg:sticky lg:top-32">
-          {section.image ? (
-            <MediaFrame
-              src={section.image}
-              alt={section.imageAlt ?? ""}
-              aspect="portrait"
-            />
-          ) : (
-            <Placeholder aspect="portrait" tone="warm" />
-          )}
-        </div>
-        <div className="lg:col-span-7">
-          <p className="eyebrow mb-4">{section.eyebrow ?? "OVERVIEW"}</p>
-          {section.heading && (
-            <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
-              {section.heading}
-            </h2>
-          )}
-          <div
-            className={
-              section.heading
-                ? "mt-8 space-y-5 text-mocha text-base md:text-[17px] leading-[1.95] font-light"
-                : "space-y-5 text-mocha text-base md:text-[17px] leading-[1.95] font-light"
-            }
-          >
-            {section.body.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+  const hasMedia = !!section.image || !!section.imageAlt;
+  if (hasMedia) {
+    return (
+      <Section bg={bg} size="md">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-5 lg:sticky lg:top-32">
+            {section.image ? (
+              <MediaFrame
+                src={section.image}
+                alt={section.imageAlt ?? ""}
+                aspect="portrait"
+              />
+            ) : (
+              <Placeholder aspect="portrait" tone="warm" />
+            )}
+          </div>
+          <div className="lg:col-span-7">
+            <OverviewText section={section} />
           </div>
         </div>
+      </Section>
+    );
+  }
+  return (
+    <Section bg={bg} size="md">
+      <div className="max-w-3xl">
+        <OverviewText section={section} />
       </div>
     </Section>
+  );
+}
+
+function OverviewText({
+  section,
+}: {
+  section: Extract<PageSection, { kind: "overview" }>;
+}) {
+  return (
+    <>
+      <p className="eyebrow mb-4">{section.eyebrow ?? "OVERVIEW"}</p>
+      {section.heading && (
+        <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
+          {section.heading}
+        </h2>
+      )}
+      <div
+        className={
+          section.heading
+            ? "mt-8 space-y-5 text-mocha text-[16px] md:text-[17px] leading-[1.95] font-light"
+            : "space-y-5 text-mocha text-[16px] md:text-[17px] leading-[1.95] font-light"
+        }
+      >
+        {section.body.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -110,10 +140,22 @@ function Symptoms({
                 key={s}
                 className="flex items-start gap-5 py-5 text-charcoal"
               >
-                <span className="font-serif italic text-taupe text-sm tracking-wider mt-1 shrink-0">
-                  {String(i + 1).padStart(2, "0")}
+                <span
+                  aria-hidden
+                  className="mt-1.5 inline-flex items-center justify-center w-5 h-5 border border-cocoa/40 text-cocoa shrink-0"
+                >
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <path d="M5 13l4 4L19 7" />
+                  </svg>
                 </span>
-                <span className="text-base leading-relaxed font-light">
+                <span className="text-[15.5px] leading-relaxed font-normal">
                   {s}
                 </span>
               </li>
@@ -151,7 +193,9 @@ function Causes({
             key={c.title}
             className="border-t border-line-strong pt-7 pb-2"
           >
-            <h3 className="text-cocoa text-xl tracking-tight">{c.title}</h3>
+            <h3 className="text-cocoa text-xl tracking-tight font-medium">
+              {c.title}
+            </h3>
             <p className="mt-3 text-mocha leading-[1.85] font-light text-[15px]">
               {c.desc}
             </p>
@@ -191,7 +235,7 @@ function Diagnosis({
             <p className="font-serif italic text-taupe text-xs tracking-[0.2em]">
               STEP&nbsp;{s.step}
             </p>
-            <h3 className="mt-4 text-cocoa text-lg lg:text-xl tracking-tight">
+            <h3 className="mt-4 text-cocoa text-lg lg:text-xl tracking-tight font-medium">
               {s.title}
             </h3>
             <p className="mt-3 text-mocha leading-relaxed font-light text-[14.5px]">
@@ -214,7 +258,7 @@ function Treatment({
   return (
     <Section bg={bg} size="md">
       <div className="max-w-2xl mb-14">
-        <p className="eyebrow mb-4">{section.eyebrow ?? "PROGRAMS"}</p>
+        <p className="eyebrow mb-4">{section.eyebrow ?? "TREATMENT"}</p>
         <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
           {section.heading ?? "치료 프로그램"}
         </h2>
@@ -233,13 +277,112 @@ function Treatment({
             <p className="font-serif italic text-taupe text-xs tracking-[0.2em]">
               0{i + 1}
             </p>
-            <h3 className="mt-4 text-cocoa text-xl tracking-tight">
+            <h3 className="mt-4 text-cocoa text-xl tracking-tight font-medium">
               {p.title}
             </h3>
             <p className="mt-4 text-mocha leading-relaxed font-light text-[15px]">
               {p.desc}
             </p>
           </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Prevention({
+  section,
+  bg,
+}: {
+  section: Extract<PageSection, { kind: "prevention" }>;
+  bg: "bone" | "ivory" | "sand";
+}) {
+  return (
+    <Section bg={bg} size="md">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+        <div className="lg:col-span-5">
+          <p className="eyebrow mb-4">{section.eyebrow ?? "PREVENTION"}</p>
+          <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
+            {section.heading ?? "예방 수칙"}
+          </h2>
+          {section.desc && (
+            <p className="mt-6 text-mocha font-light leading-relaxed">
+              {section.desc}
+            </p>
+          )}
+        </div>
+        <div className="lg:col-span-7">
+          <ul className="space-y-4">
+            {section.items.map((s, i) => (
+              <li
+                key={s}
+                className="flex items-start gap-4 text-charcoal border-b border-line pb-4 last:border-b-0"
+              >
+                <span className="font-serif italic text-taupe text-sm tracking-wider mt-1 shrink-0 w-6">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[15.5px] leading-relaxed font-normal">
+                  {s}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Faq({
+  section,
+  bg,
+}: {
+  section: Extract<PageSection, { kind: "faq" }>;
+  bg: "bone" | "ivory" | "sand";
+}) {
+  return (
+    <Section bg={bg} size="md">
+      <div className="max-w-2xl mb-12">
+        <p className="eyebrow mb-4">{section.eyebrow ?? "FAQ"}</p>
+        <h2 className="heading-display text-cocoa text-3xl md:text-4xl">
+          {section.heading ?? "자주 묻는 질문"}
+        </h2>
+      </div>
+      <div className="border-t border-line-strong">
+        {section.items.map((item, i) => (
+          <details
+            key={i}
+            className="group border-b border-line"
+          >
+            <summary className="flex items-start justify-between gap-6 py-6 cursor-pointer list-none">
+              <span className="flex items-start gap-5">
+                <span className="font-serif italic text-taupe text-sm tracking-wider mt-1 shrink-0">
+                  Q{String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-cocoa text-base md:text-lg font-medium">
+                  {item.q}
+                </span>
+              </span>
+              <span
+                aria-hidden
+                className="mt-1 shrink-0 w-6 h-6 flex items-center justify-center text-cocoa transition-transform duration-300 group-open:rotate-45"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                >
+                  <path d="M12 5v14M5 12h14" />
+                </svg>
+              </span>
+            </summary>
+            <div className="pl-12 pr-6 pb-7 -mt-1 text-mocha text-[15px] leading-[1.85] font-light">
+              {item.a}
+            </div>
+          </details>
         ))}
       </div>
     </Section>

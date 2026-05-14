@@ -17,7 +17,7 @@ export function Footer() {
                 className="w-10 h-10 object-contain"
               />
               <div className="flex items-baseline gap-2">
-                <span className="font-sans font-bold text-[26px] tracking-tight text-cocoa">
+                <span className="font-sans font-bold text-[26px] tracking-tight text-brand">
                   숨앤소리
                 </span>
                 <span className="text-[11px] tracking-[0.25em] text-taupe font-light">

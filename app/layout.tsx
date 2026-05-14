@@ -112,6 +112,12 @@ export default function RootLayout({
       lang="ko"
       className={`${notoSansKr.variable} ${cormorant.variable} h-full antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css"
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-bone text-charcoal">
         <script
           type="application/ld+json"

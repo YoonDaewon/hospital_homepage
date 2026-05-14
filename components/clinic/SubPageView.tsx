@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { PageHero } from "@/components/ui/PageHero";
 import { Section } from "@/components/ui/Section";
@@ -25,23 +24,7 @@ export function SubPageView({
         subtitle={page.tagline}
       />
 
-      {page.contentImage ? (
-        <Section bg="bone" size="sm">
-          <div className="mx-auto" style={{ maxWidth: page.contentImage.width }}>
-            <Image
-              src={page.contentImage.src}
-              alt={page.contentImage.alt ?? page.name}
-              width={page.contentImage.width}
-              height={page.contentImage.height}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </Section>
-      ) : (
-        <PageSections sections={page.sections} />
-      )}
+      <PageSections sections={page.sections} />
 
       <Section bg="ivory" size="md">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
