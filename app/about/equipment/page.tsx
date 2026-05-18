@@ -29,9 +29,21 @@ const equipment: Equipment[] = [
     src: "/images/equipment/titan.png",
   },
   {
-    model: "ENT Surgery Equipment",
-    nameKo: "ENT 전기 수술 장치",
-    desc: "저주파 저온 기법으로 조직을 태우지 않고 익히는 시술 장비. 임피던스 값을 자동으로 감지해 응고 완료 시점에 알람을 울리는 자동 피드백 기능을 갖췄으며, 내부 응고로 외부 손상을 최소화합니다.",
+    model: "VNG system",
+    nameKo: "VR 어지럼증 진단 장비",
+    desc: "국내 최초 가상현실 기반 VR 어지럼증 진단 장비. 편안한 VR 검사 환경에서 짧고 빠른 검사로 환자 불편을 최소화하고, 눈동자의 미세한 움직임까지 정밀 분석해 환자 본인의 상태를 3D로 직접 시각화할 수 있습니다.",
+    src: "/images/equipment/neuro-ears-anna.png",
+  },
+  {
+    model: "Nox-A1S",
+    nameKo: "수면다원검사기",
+    desc: "대학병원 수준의 정밀 진단이 가능한 수면다원검사기. 선으로부터 자유로운 무선 디자인과 작고 가벼운 고정밀 센서 기술로 환자분의 자연스러운 수면을 측정합니다.",
+    src: "/images/equipment/nox-a1s.png",
+  },
+  {
+    model: "ZERONE RF system",
+    nameKo: "고주파 수술기",
+    desc: "저온 라디오파 기술을 이용한 고주파 수술기. 비염 수술, 코골이 수술, 편도 수술에 활용되며 — 임피던스 자동 감지로 응고 완료 시점을 알람으로 알리는 자동 피드백 기능을 갖췄고, 내부 응고로 외부 손상을 최소화합니다.",
     src: "/images/equipment/sense-z.png",
   },
   {
@@ -86,7 +98,7 @@ export default function EquipmentPage() {
           </div>
 
           {/* Equipment grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 lg:gap-x-8 gap-y-12 lg:gap-y-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-6 gap-y-10 lg:gap-y-12">
             {equipment.map((e) => (
               <article key={e.model} className="flex flex-col">
                 <div className="relative aspect-[4/3] w-full bg-ivory border border-line overflow-hidden">

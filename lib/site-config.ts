@@ -19,29 +19,29 @@ export const siteConfig = {
     "오승리 원장",
   ],
   url: "https://soom-sori.kr",
-  address: "서울특별시 강남구 역삼동 (역삼역 2번 출구 도보 1분)",
-  addressShort: "강남구 역삼동, 역삼역 2번 출구",
-  phone: "02-000-0000",
-  phoneDisplay: "02-000-0000",
+  address: "서울특별시 강남구 역삼동 739 3층 (역삼역 3번 출구 도보 150m)",
+  addressShort: "강남구 역삼동 739, 역삼역 3번 출구",
+  phone: "02-554-5120",
+  phoneDisplay: "02-554-5120",
   email: "contact@soom-sori.kr",
   hours: [
     {
       label: "평일",
       daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:30",
+      opens: "08:30",
       closes: "18:30",
-      display: "오전 9:30 — 오후 6:30",
+      display: "AM 08:30 — PM 06:30",
     },
     {
       label: "토요일",
       daysOfWeek: ["Saturday"],
-      opens: "09:30",
-      closes: "13:30",
-      display: "오전 9:30 — 오후 1:30",
+      opens: "09:00",
+      closes: "14:00",
+      display: "AM 09:00 — PM 02:00",
     },
   ],
   closedDays: "일요일 / 공휴일 휴진",
-  lunch: "점심시간 오후 1:00 — 오후 2:00",
+  lunch: "점심시간 PM 01:30 — PM 02:30",
 };
 
 export type NavChild = { label: string; href: string };
@@ -59,6 +59,7 @@ export const navigation: NavItem[] = [
       { label: "숨앤소리 이비인후과", href: "/about" },
       { label: "의료진 소개", href: "/about/doctor" },
       { label: "장비 소개", href: "/about/equipment" },
+      { label: "둘러보기", href: "/about/facility" },
       { label: "진료안내·오시는 길", href: "/about/visit" },
     ],
   },
@@ -68,7 +69,6 @@ export const navigation: NavItem[] = [
     children: [
       { label: "난청", href: "/hearing-tinnitus/hearing-loss" },
       { label: "이명", href: "/hearing-tinnitus/tinnitus" },
-      { label: "청각장애 진단", href: "/hearing-tinnitus/disability-diagnosis" },
     ],
   },
   {
@@ -81,32 +81,35 @@ export const navigation: NavItem[] = [
   },
   {
     label: "수면질환",
-    href: "/sleep/disorders",
+    href: "/sleep/polysomnography",
     children: [
-      { label: "수면질환", href: "/sleep/disorders" },
       { label: "수면다원검사", href: "/sleep/polysomnography" },
       { label: "코골이·수면무호흡증", href: "/sleep/snoring-osa" },
       { label: "불면증", href: "/sleep/insomnia" },
       { label: "하지불안증후군", href: "/sleep/rls" },
-      { label: "렘수면장애·몽유병", href: "/sleep/rbd" },
       { label: "양압기", href: "/sleep/cpap" },
     ],
   },
   {
     label: "이비인후과",
-    href: "/ent/rhinitis-sinusitis",
+    href: "/ent/voice",
     children: [
-      { label: "비염·축농증", href: "/ent/rhinitis-sinusitis" },
       { label: "후두·음성질환", href: "/ent/voice" },
-      { label: "기능의학", href: "/ent/functional-medicine" },
+      { label: "초음파 클리닉", href: "/ent/ultrasound" },
     ],
   },
   {
-    label: "수술·수액",
-    href: "/surgery-iv/procedures",
+    label: "수술",
+    href: "/surgery/procedures",
     children: [
-      { label: "비·구강 시술", href: "/surgery-iv/procedures" },
-      { label: "영양·면역 수액", href: "/surgery-iv/iv-therapy" },
+      { label: "비·구강 시술", href: "/surgery/procedures" },
+    ],
+  },
+  {
+    label: "수액",
+    href: "/iv/therapy",
+    children: [
+      { label: "영양·면역 수액", href: "/iv/therapy" },
     ],
   },
 ];

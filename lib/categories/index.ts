@@ -3,7 +3,8 @@ import { hearingTinnitus } from "./hearing-tinnitus";
 import { dizzinessHeadache } from "./dizziness-headache";
 import { sleep } from "./sleep";
 import { ent } from "./ent";
-import { surgeryIv } from "./surgery-iv";
+import { surgery } from "./surgery";
+import { iv } from "./iv";
 
 export type { Category, SubPage, PageSection } from "./types";
 
@@ -12,7 +13,8 @@ export const categories: Category[] = [
   dizzinessHeadache,
   sleep,
   ent,
-  surgeryIv,
+  surgery,
+  iv,
 ];
 
 export const getCategory = (slug: string): Category | undefined =>

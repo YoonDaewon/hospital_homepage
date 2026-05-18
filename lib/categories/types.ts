@@ -88,7 +88,8 @@ export type Category = {
     | "dizziness-headache"
     | "sleep"
     | "ent"
-    | "surgery-iv";
+    | "surgery"
+    | "iv";
   name: string;
   nameEn: string;
   tagline: string;

@@ -49,9 +49,9 @@ export function SchedulePopup() {
       />
 
       <div className="relative w-full max-w-[680px] max-h-[92vh] flex flex-col bg-bone shadow-[0_20px_60px_rgba(0,0,0,0.35)] rounded-xl overflow-hidden">
-        {/* Title bar */}
-        <div className="flex items-center justify-between bg-charcoal text-bone px-5 sm:px-6 h-12 shrink-0">
-          <p className="text-sm sm:text-[15px] tracking-wide font-medium">
+        {/* Title bar — brand blue */}
+        <div className="flex items-center justify-between bg-brand text-bone px-5 sm:px-6 h-12 shrink-0">
+          <p className="text-sm sm:text-[15px] tracking-wide font-semibold">
             {title}
           </p>
           <button
@@ -84,19 +84,26 @@ export function SchedulePopup() {
           />
         </div>
 
-        {/* Footer with checkbox */}
-        <div className="shrink-0 border-t border-line bg-bone px-5 sm:px-6 py-3">
+        {/* Footer — checkbox left, close button right */}
+        <div className="shrink-0 border-t border-line bg-bone px-5 sm:px-6 py-3 flex items-center justify-between gap-4">
           <label className="inline-flex items-center gap-2.5 cursor-pointer select-none group">
             <input
               type="checkbox"
               checked={dontShow}
               onChange={(e) => setDontShow(e.target.checked)}
-              className="w-4 h-4 accent-cocoa cursor-pointer"
+              className="w-4 h-4 accent-brand cursor-pointer"
             />
-            <span className="text-[13px] text-charcoal/75 group-hover:text-cocoa transition-colors">
+            <span className="text-[13px] font-medium text-charcoal/75 group-hover:text-brand transition-colors">
               24시간 동안 보이지 않기
             </span>
           </label>
+          <button
+            type="button"
+            onClick={close}
+            className="px-4 py-1.5 text-[13px] font-semibold text-brand hover:bg-brand hover:text-bone border border-brand rounded-full transition-colors"
+          >
+            닫기
+          </button>
         </div>
       </div>
     </div>

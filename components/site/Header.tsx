@@ -19,23 +19,34 @@ export function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 bg-bone border-b border-line">
-        <div className="container-content flex items-center justify-between h-[68px] sm:h-[76px] lg:h-[84px]">
-          <Link href="/" className="flex items-center gap-2.5" onClick={closeMobile}>
+      <header className="fixed inset-x-0 top-0 z-50 bg-white border-b border-line">
+        <div className="container-content flex items-center justify-between h-[72px] sm:h-[80px] lg:h-[88px]">
+          <Link href="/" className="flex items-center gap-3 lg:gap-4" onClick={closeMobile}>
             <Image
               src="/images/icon_v1.png"
               alt=""
-              width={36}
-              height={36}
-              className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 object-contain"
+              width={48}
+              height={48}
+              className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 object-contain"
               priority
             />
-            <span className="flex items-baseline gap-2.5">
-              <span className="font-sans font-bold text-2xl sm:text-[26px] lg:text-[28px] tracking-tight text-brand">
-                숨앤소리
+            <span
+              className="flex flex-col items-center gap-1"
+              style={{
+                fontFamily:
+                  'NanumSquareRound, "Pretendard Variable", Pretendard, system-ui, sans-serif',
+              }}
+            >
+              <span className="flex items-baseline leading-none">
+                <span className="font-extrabold text-[20px] sm:text-[24px] lg:text-[28px] tracking-tight text-brand">
+                  숨앤소리
+                </span>
+                <span className="font-extrabold text-[20px] sm:text-[24px] lg:text-[28px] tracking-tight text-charcoal">
+                  이비인후과
+                </span>
               </span>
-              <span className="hidden sm:inline text-[13px] tracking-[0.2em] text-cocoa/70 font-semibold">
-                ENT CLINIC
+              <span className="text-[10px] sm:text-[11px] lg:text-[12px] tracking-[0.05em] text-charcoal/55 font-medium leading-none">
+                Breath and Sound ENT clinic
               </span>
             </span>
           </Link>
@@ -136,19 +147,32 @@ function MobileMenu({
           open ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between h-[68px] sm:h-[76px] px-6 border-b border-line">
+        <div className="flex items-center justify-between h-[80px] sm:h-[92px] px-6 border-b border-line">
           <span className="flex items-center gap-2.5">
             <Image
               src="/images/icon_v1.png"
               alt=""
-              width={32}
-              height={32}
-              className="w-8 h-8 object-contain"
+              width={56}
+              height={56}
+              className="w-12 h-12 object-contain"
             />
-            <span className="font-sans font-bold text-[22px] text-brand tracking-tight">
-              숨앤소리
-              <span className="ml-2 text-[12px] tracking-[0.2em] text-cocoa/70 font-semibold">
-                ENT
+            <span
+              className="flex flex-col items-center gap-1"
+              style={{
+                fontFamily:
+                  'NanumSquareRound, "Pretendard Variable", Pretendard, system-ui, sans-serif',
+              }}
+            >
+              <span className="flex items-baseline leading-none">
+                <span className="font-extrabold text-[19px] tracking-tight text-brand">
+                  숨앤소리
+                </span>
+                <span className="font-extrabold text-[19px] tracking-tight text-charcoal">
+                  이비인후과
+                </span>
+              </span>
+              <span className="text-[10px] tracking-[0.05em] text-charcoal/55 font-medium leading-none">
+                Breath and Sound ENT clinic
               </span>
             </span>
           </span>

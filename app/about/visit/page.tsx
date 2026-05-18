@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   alternates: { canonical: "/about/visit" },
 };
 
-const mapQuery = encodeURIComponent("역삼역 2번 출구");
+const mapQuery = encodeURIComponent("서울 강남구 역삼동 739");
 
 const hours = [
-  { label: "평일", time: "AM 09:30 ~ PM 18:30" },
-  { label: "점심시간", time: "PM 13:00 ~ PM 14:00" },
-  { label: "토요일", time: "AM 09:30 ~ PM 13:30" },
+  { label: "평일 (월–금)", time: "AM 08:30 — PM 06:30" },
+  { label: "점심시간", time: "PM 01:30 — PM 02:30" },
+  { label: "토요일", time: "AM 09:00 — PM 02:00" },
   { label: "일요일 / 공휴일", time: "휴진" },
 ];
 
@@ -93,7 +93,7 @@ export default function VisitPage() {
                 ))}
               </dl>
               <p className="mt-5 text-[12.5px] lg:text-[13px] text-bone/75 leading-relaxed">
-                ※ 토요일 점심시간 없이 진료
+                ※ 토요일은 점심시간 없이 진료합니다
               </p>
             </div>
           </div>

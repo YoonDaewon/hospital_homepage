@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Section } from "@/components/ui/Section";
-import { HeroCarousel } from "@/components/site/HeroCarousel";
+import { HeroIntro } from "@/components/site/HeroIntro";
 import { FacilityCarousel } from "@/components/site/FacilityCarousel";
 import { SchedulePopup } from "@/components/site/SchedulePopup";
 import { categories } from "@/lib/categories";
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <>
       <SchedulePopup />
-      <HeroCarousel />
+      <HeroIntro />
       <ClinicsSection />
       <DoctorSection />
       <FacilityPreviewSection />
@@ -26,50 +26,45 @@ type ClinicCardConfig = {
   subtitle: string;
   image: string;
   alt: string;
-  bgClass: string;
-  bgHex: string;
+  flip?: boolean;
 };
 
 const clinicCardConfig: Record<string, ClinicCardConfig> = {
   "hearing-tinnitus": {
     shortName: "난청·이명",
     subtitle: "정밀 청력검사와 단계별 맞춤 치료",
-    image: "/images/clinic/hear.jpg",
+    image: "/images/clinic/hear.png",
     alt: "난청·이명 클리닉",
-    bgClass: "bg-ivory",
-    bgHex: "#f5f0e8",
   },
   "dizziness-headache": {
     shortName: "어지럼증·두통",
-    subtitle: "전정기능검사·이석정복술까지 정밀 평가",
-    image: "/images/clinic/headache.jpg",
+    subtitle: "대학병원 수준의 평형검사 및 치료체계",
+    image: "/images/clinic/headache.png",
     alt: "어지럼증·두통 클리닉",
-    bgClass: "bg-sand",
-    bgHex: "#ebe3d6",
   },
   sleep: {
     shortName: "수면질환",
     subtitle: "코골이·무호흡·불면·하지불안 등",
     image: "/images/clinic/sleep.png",
     alt: "수면질환 클리닉",
-    bgClass: "bg-ivory",
-    bgHex: "#f5f0e8",
   },
   ent: {
     shortName: "이비인후과",
-    subtitle: "비염·축농증·후두·기능의학 종합 진료",
-    image: "/images/clinic/enp.jpg",
+    subtitle: "후두·음성 진료와 두경부 초음파",
+    image: "/images/clinic/enp.png",
     alt: "이비인후과 클리닉",
-    bgClass: "bg-sand",
-    bgHex: "#ebe3d6",
   },
-  "surgery-iv": {
-    shortName: "수술·수액",
-    subtitle: "회복 부담 적은 시술과 영양·면역 수액",
-    image: "/images/clinic/surgery.jpg",
-    alt: "수술·수액 클리닉",
-    bgClass: "bg-ivory",
-    bgHex: "#f5f0e8",
+  surgery: {
+    shortName: "수술",
+    subtitle: "회복 부담 적은 비·구강 시술",
+    image: "/images/clinic/surgery.png",
+    alt: "수술 클리닉",
+  },
+  iv: {
+    shortName: "수액",
+    subtitle: "맞춤 영양·면역 정맥 수액 처방",
+    image: "/images/clinic/sap.jpg",
+    alt: "수액 클리닉",
   },
 };
 
@@ -80,13 +75,13 @@ function ClinicsSection() {
         <p className="font-serif italic text-taupe tracking-[0.3em] text-xs sm:text-sm mb-4">
           Soom &amp; Sori ENT clinic
         </p>
-        <h2 className="font-sans text-cocoa text-[28px] sm:text-4xl lg:text-[44px] tracking-tight">
+        <h2 className="font-sans text-charcoal text-[28px] sm:text-4xl lg:text-[44px] tracking-tight">
           <span className="font-medium">숨앤소리이비인후과</span>{" "}
           <span className="font-extrabold">진료과목</span>
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-line border border-line">
         {categories.map((c) => (
           <ClinicCard key={c.slug} category={c} />
         ))}
@@ -101,35 +96,29 @@ function ClinicCard({ category }: { category: Category }) {
   return (
     <Link
       href={`/${category.slug}/${category.pages[0].slug}`}
-      className={`group relative block overflow-hidden h-[240px] sm:h-[260px] lg:h-[300px] ${config.bgClass}`}
+      className="group relative block aspect-[16/9] sm:aspect-[2/1] overflow-hidden bg-white"
     >
-      <div className="absolute right-0 top-0 bottom-0 w-[58%]">
-        <Image
-          src={config.image}
-          alt={config.alt}
-          fill
-          sizes="(max-width: 768px) 60vw, 30vw"
-          className="object-cover"
-        />
-        <div
-          className="absolute inset-y-0 left-0 w-1/3 pointer-events-none"
-          style={{
-            background: `linear-gradient(to right, ${config.bgHex}, transparent)`,
-          }}
-        />
-      </div>
+      {/* Full image */}
+      <Image
+        src={config.image}
+        alt={config.alt}
+        fill
+        sizes="(max-width: 640px) 100vw, 50vw"
+        className={`object-cover ${config.flip ? "-scale-x-100" : ""}`}
+      />
 
-      <div className="relative z-10 h-full flex flex-col justify-between p-6 sm:p-7 lg:p-9 w-[58%] sm:w-[55%]">
+      {/* Text overlay top-left + arrow bottom-left */}
+      <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 sm:p-8 lg:p-10">
         <div>
-          <p className="text-[12px] sm:text-[13px] lg:text-sm text-charcoal/70 mb-2 sm:mb-3 font-medium tracking-tight">
+          <p className="text-[12.5px] sm:text-[13px] lg:text-sm text-charcoal/75 mb-2 sm:mb-3 font-semibold tracking-tight">
             {config.subtitle}
           </p>
-          <h3 className="font-sans font-extrabold text-cocoa text-[26px] sm:text-3xl lg:text-[34px] tracking-tight">
+          <h3 className="font-sans font-extrabold text-charcoal text-[28px] sm:text-[32px] lg:text-[40px] tracking-tight leading-tight">
             {config.shortName}
           </h3>
         </div>
 
-        <span className="inline-flex items-center justify-center w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-cocoa/40 text-cocoa transition-all duration-300 group-hover:bg-cocoa group-hover:border-cocoa group-hover:text-bone">
+        <span className="inline-flex items-center justify-center w-11 h-11 lg:w-12 lg:h-12 rounded-full border border-cocoa/40 text-cocoa transition-all duration-300 group-hover:bg-brand group-hover:border-brand group-hover:text-bone bg-white/30 backdrop-blur-sm">
           <svg
             width="18"
             height="18"
@@ -147,11 +136,18 @@ function ClinicCard({ category }: { category: Category }) {
   );
 }
 
-const doctorBiography = [
+const doctorEducation = [
   "중앙대학교 의과대학 졸업",
-  "중앙대학교 의학 석사",
-  "중앙대학교병원 이비인후과 전공의 수료",
-  "대한이비인후과학회 인정 이비인후과 전문의",
+  "중앙대학교 이비인후과학 석사",
+  "중앙대병원 이비인후과 수석전공의",
+  "중앙대병원 이비인후과 외래교수",
+  "수면다원검사 정도관리위원회 인증의",
+];
+
+const doctorCareer = [
+  "현) 숨앤소리이비인후과 대표원장",
+  "전) 영종바른이비인후과 원장",
+  "전) BS코아이비인후과 원장",
 ];
 
 const doctorSocieties = [
@@ -159,8 +155,11 @@ const doctorSocieties = [
   "대한비과학회 정회원",
   "대한이과학회 정회원",
   "대한두경부외과학회 정회원",
-  "대한소아이비인후과학회 정회원",
-  "대한수면학회 정회원",
+  "대한평형의학회 정회원",
+  "대한청각학회 정회원",
+  "대한천식알레르기학회 정회원",
+  "대한수면의학회 정회원",
+  "대한수면호흡학회 정회원",
 ];
 
 function DoctorSection() {
@@ -182,13 +181,16 @@ function DoctorSection() {
 
         {/* Content - RIGHT */}
         <div className="lg:col-span-7">
-          <p className="font-serif italic text-brand tracking-[0.2em] text-sm mb-3">
-            Soom &amp; Sori ENT clinic
+          <p className="font-sans text-brand tracking-[0.25em] text-[12px] sm:text-sm font-bold mb-3">
+            DR. OH SEUNG RI
           </p>
-          <h2 className="text-cocoa text-3xl sm:text-4xl lg:text-[40px] tracking-tight">
+          <h2 className="text-charcoal text-3xl sm:text-4xl lg:text-[40px] tracking-tight">
             <span className="font-extrabold">오승리</span>{" "}
             <span className="font-medium">대표원장</span>
           </h2>
+          <p className="mt-2 text-charcoal/70 text-sm lg:text-[15px] font-semibold tracking-tight">
+            이비인후과 전문의
+          </p>
 
           <div className="mt-7">
             <span
@@ -205,11 +207,11 @@ function DoctorSection() {
           </div>
 
           <div className="mt-9 border-t border-line-strong pt-7">
-            <h3 className="font-bold text-cocoa text-lg lg:text-xl mb-5">
-              약력
+            <h3 className="font-bold text-charcoal text-lg lg:text-xl mb-5">
+              학력
             </h3>
             <ul className="space-y-3.5">
-              {doctorBiography.map((item) => (
+              {doctorEducation.map((item) => (
                 <li
                   key={item}
                   className="flex items-start gap-3 text-charcoal/85 text-[15px] font-medium"
@@ -226,11 +228,34 @@ function DoctorSection() {
         </div>
       </div>
 
-      {/* Societies - full width */}
+      {/* Career - full width */}
       <div className="mt-12 lg:mt-14">
         <div className="flex items-center gap-4 mb-5">
           <span className="inline-block bg-brand text-bone font-bold px-5 py-2 rounded-md text-sm lg:text-[15px] tracking-wide">
-            경력 및 학회활동
+            경력
+          </span>
+        </div>
+        <div className="border-t border-line-strong pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3.5">
+          {doctorCareer.map((c) => (
+            <div
+              key={c}
+              className="flex items-start gap-3 text-charcoal/85 text-[15px] font-medium"
+            >
+              <span
+                aria-hidden
+                className="mt-[10px] w-1.5 h-1.5 rounded-full bg-brand shrink-0"
+              />
+              <span>{c}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Societies - full width */}
+      <div className="mt-10 lg:mt-12">
+        <div className="flex items-center gap-4 mb-5">
+          <span className="inline-block bg-brand text-bone font-bold px-5 py-2 rounded-md text-sm lg:text-[15px] tracking-wide">
+            학회 활동
           </span>
         </div>
         <div className="border-t border-line-strong pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-3.5">
@@ -262,7 +287,7 @@ function DoctorSection() {
 
 function FacilityPreviewSection() {
   return (
-    <section className="bg-sand pt-12 md:pt-16 lg:pt-20">
+    <section className="bg-white pt-12 md:pt-16 lg:pt-20">
       <div className="container-content text-center mb-10 lg:mb-14">
         <h2 className="font-sans font-extrabold text-cocoa text-3xl sm:text-4xl lg:text-[44px] tracking-tight">
           시설 안내
@@ -277,7 +302,7 @@ function FacilityPreviewSection() {
   );
 }
 
-const visitMapQuery = encodeURIComponent("역삼역 2번 출구");
+const visitMapQuery = encodeURIComponent("서울 강남구 역삼동 739");
 
 function VisitSection() {
   return (
